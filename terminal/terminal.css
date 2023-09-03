@@ -1,0 +1,133 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: none;
+    height: 500px;
+    width: 900px;
+    overflow: hidden;
+}
+
+
+
+#terminal-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    min-width: 450px;
+    min-height: 70px;
+}
+/* Header */
+header {
+    background-color: #2e2e2e;
+    max-height: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+  
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+#terminal-tab {
+    display: flex;
+    background-color: #0c0c0c;
+    padding: 6px 6px 6px 15px;
+    border-radius: 10px 10px 0 0;
+    max-width: 200px;
+    width: 200px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+#empty-space {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 102%;
+    height: 6px;
+    background-color: #0c0c0c;
+    transform: translateY(5px) translatex(-2px);
+    border-radius: 6px 6px 0 0;
+}
+
+
+.button-tab {
+    all: unset;
+    font-size: 13px;
+    padding: 0px 10px 0px 10px;
+}
+
+
+
+.button-tab:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#terminal-tab-inner {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#terminal-tab-inner p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.tab-right-menu,
+.tab-right-menu-close {
+    all: unset;
+    height: 30px;
+    width: 40px;
+    text-align: center;
+}
+
+.tab-right-menu-close:hover {
+    background-color: rgb(187, 8, 8);
+}
+
+.tab-right-menu:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Terminal console */
+
+#terminal-window {
+    flex-grow: 1;
+    background-color: #0c0c0c;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+    padding: 5px;
+}
+
+#input-container {
+    display: flex;
+}
+
+
+#terminal-input {
+    all: unset;
+}
+
+
+p,
+#terminal-input {
+    font-size: 11pt;
+    font-family: 'Cascadia Code', monospace;
+    color: #cccccc;
+    margin: 0; 
+    padding: 0;
+}
+
+#terminal-input {
+    flex-grow: 1;
+}

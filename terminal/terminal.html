@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="terminal.css">
+</head>
+    <body>
+        <div id="terminal-container">
+            <header>
+                <div class="flex-container">
+                    <div id="terminal-tab">
+                        <div id="terminal-tab-inner">
+                            <img src="terminalIcon.png">
+                            <p>Command prompt</p>
+                        </div>
+                        <button class="button-tab">
+                            <p>X</p>
+                        </button>
+                        <div id="empty-space"></div>
+                    </div>
+                    <button class="button-tab" style="border-right: 1px solid #3a3a3a">
+                        <p>+</p>
+                    </button>
+                    <button class="button-tab">
+                        <p>v</p>
+                    </button>
+                </div>
+                <div id="terminal-menu">
+                    <button class="tab-right-menu">
+                        <p>-</p>
+                    </button>
+                    <button class="tab-right-menu">
+                        <p>▢</p>
+                    </button>
+                    <button class="tab-right-menu-close">
+                        <p>X</p>
+                    </button>
+                </div>
+            </header>
+            <div id="terminal-window">
+                <div id="messages-container"></div>
+                
+                <div id="input-container">
+                    <p>C:\Users\Sandelier\Projects></p>
+                    <input type="text" id="terminal-input" autofocus>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="terminal.js"></script>
+</html>
