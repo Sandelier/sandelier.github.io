@@ -35,6 +35,23 @@ document.getElementById("terminal-container").addEventListener("click", function
 let previousCommands = [];
 let currentCommandIndex = -1;
 
+let currentDirectory;
+
+function changeDirectory(path) {
+    if (validatePath(path)) {
+        document.querySelector("#input-container p").textContent = path;
+        currentDirectory = path;
+    }
+}
+
+function validatePath(path) {
+
+    return true;
+}
+
+// Initializing the directory
+changeDirectory('C:\\Users\\Sandelier\\Projects>');
+
 terminalInput.addEventListener('keydown', function (event) {
     switch (event.key) {
         // Captures the message written and sends to terminal.
@@ -53,7 +70,7 @@ terminalInput.addEventListener('keydown', function (event) {
                 currentCommandIndex = previousCommands.length;
             }
 
-            sendToTerminal('C:\\Users\\Sandelier\\Projects>', userInput, true);
+            sendToTerminal(currentDirectory, userInput, true);
             break;
 
         // Handling when selecting previous commands.
@@ -157,6 +174,7 @@ function launchCommand(commandMessage) {
                 break;
             case 'cd':
                 sendToTerminal("", "Changing directorys is in the makings");
+                changeDirectory(messageSplitted[1]);
                 break;
             case 'cl':
                 messagesContainer.innerHTML = '';
@@ -212,6 +230,7 @@ function sendAboutMe() {
     sendToTerminal('', ' - I am 20 year old developer from finland');
     sendToTerminal('', ' - Currently my primary coding language is Javascript/Nodejs. I do know some Java and minimal amounth of Python.');
     sendToTerminal('', ' - In freetime i usually either code, read mangas or play with my friends.');
+    sendToTerminal('', ' - All my projects are typically MIT license because well i like to share my code and allow other people to modify it and etc.');
     sendToTerminal('', ' - Made 3.9.2023');
     sendEmptyToTerminal();
 }
