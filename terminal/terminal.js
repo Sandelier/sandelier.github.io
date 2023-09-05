@@ -35,22 +35,8 @@ document.getElementById("terminal-container").addEventListener("click", function
 let previousCommands = [];
 let currentCommandIndex = -1;
 
-let currentDirectory;
+let currentDirectory = 'C:\\Users\\Sandelier\\Desktop\\Projects>';
 
-function changeDirectory(path) {
-    if (validatePath(path)) {
-        document.querySelector("#input-container p").textContent = path;
-        currentDirectory = path;
-    }
-}
-
-function validatePath(path) {
-
-    return true;
-}
-
-// Initializing the directory
-changeDirectory('C:\\Users\\Sandelier\\Projects>');
 
 terminalInput.addEventListener('keydown', function (event) {
     switch (event.key) {
@@ -145,7 +131,6 @@ function launchCommand(commandMessage) {
         'list': ['li', 'dir'],
         'help': [],
         'aboutme': ['bio', 'profile', 'whoami', 'about', 'readme'],
-        'cd': [],
         'cl': ['clear', 'cls']
     };
 
@@ -171,10 +156,6 @@ function launchCommand(commandMessage) {
                 break;
             case 'aboutme':
                 sendAboutMe();
-                break;
-            case 'cd':
-                sendToTerminal("", "Changing directorys is in the makings");
-                changeDirectory(messageSplitted[1]);
                 break;
             case 'cl':
                 messagesContainer.innerHTML = '';
