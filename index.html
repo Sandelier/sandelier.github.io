@@ -3,17 +3,32 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="index.css">
+		<link rel="stylesheet" href="index/Css/index.css">
 	</head>
 	<body>
-		<div class="draggable-container">
-			<iframe src="browser/browser.html" width="100%" height="500px" frameborder="0"></iframe>
-			<div class="iframe-handle"></div>
-		</div>
-		<div class="draggable-container">
-			<iframe src="terminal/terminal.html" width="100%" height="500px" frameborder="0"></iframe>
-			<div class="iframe-handle"></div>
+		<header>
+			<button class="raiseIndex" data-container="terminal">
+				<img src="terminal/terminalIcon.png">
+			</button>
+			<button class="raiseIndex" data-container="browser">
+				<img src="index/images/browser.png">
+			</button>
+		</header>
+		<div id="iframeContainer">
+			<div class="draggable-container" style="display: none;" data-container="browser">
+				<iframe width="100%" height="100%" frameborder="0" id="browserFrame" loading="lazy"></iframe>
+				<div class="iframe-handle"></div>
+				<div class="resize-handle"></div>
+			</div>
+			<div class="draggable-container" data-container="terminal">
+				<iframe src="terminal/terminal.html" width="100%" height="100%" frameborder="0"></iframe>
+				<div class="iframe-handle"></div>
+				<div class="resize-handle"></div>
+			</div>
 		</div>
 	</body>
-	<script src="index.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+	<script src="index/Javascripts/handleDrag.js"></script>
+	<script src="index/Javascripts/index.js"></script>
+	<script src="index/Javascripts/handleResize.js"></script>
 </html>

@@ -1,138 +1,118 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box
+}
+body,html{
+  height:100%;
+  background:#f0f0f0;
+  overflow:hidden
 }
 
-body, html {
-  height: 100%;
-  background: #f0f0f0;
+header{
+  display:flex;
+  flex-direction:column;
+  background:#333;
+  color:#fff
 }
 
-header {
-  display: flex;
-  flex-direction: column;
-  background: #333;
-  color: #fff;
+#top-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-right:4px;
+  background-color:#1c1b22
 }
 
-/* Top header */
-#top-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 4px;
-  background-color: #1c1b22;
+#header-logo{
+  border-right:solid 1px gray;
+  padding:3px 20px 35px 23px
 }
-
-#header-logo {
-  border-right: solid 1px gray;
-  padding: 3px 20px 35px 23px;
+#header-content{
+  display:flex;
+  align-items:center;
+  flex-grow:1
 }
-
-#header-content {
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
+#header-modifyButtons{
+  display:flex;
+  align-items:center
 }
-
-#header-modifyButtons {
-  display: flex;
-  align-items: center;
+.tab-right-menu,.tab-right-menu-close{
+  all:unset;
+  height:30px;
+  width:40px;
+  text-align:center;
+  margin-left:10px
 }
-
-.tab-right-menu,
-.tab-right-menu-close {
-  all: unset;
-  height: 30px;
-  width: 40px;
-  text-align: center;
-  margin-left: 10px;
+.tab-right-menu-close:hover{
+  background-color:#bb0808
 }
-
-.tab-right-menu-close:hover {
-  background-color: rgb(187, 8, 8);
+.tab-right-menu:hover{
+  background-color:rgba(255,255,255,.1)
 }
-
-.tab-right-menu:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.header-tab-project{
+  display:flex;
+  max-width:218px;
+  max-height:59px;
+  overflow:hidden;
+  margin-left:5px;
+  margin-right:5px;
+  font-size:13px;
+  padding:8px;
+  border-radius:3px
 }
-
-.header-tab-project {
-  display: flex;
-  max-width: 218px;
-  max-height: 59px;
-  overflow: hidden;
-  margin-left: 5px;
-  margin-right: 5px;
-  font-size: 13px;
-  padding: 8px;
-  border-radius: 3px;
+.header-tab-project-file-path{
+  flex:1;
+  white-space:nowrap;
+  overflow:hidden
 }
-
-.header-tab-project-file-path {
-  flex: 1; 
-  white-space: nowrap;
-  overflow: hidden;
+.header-tab-project-close-button{
+  padding-left:5px
 }
-
-.header-tab-project-close-button {
-  padding-left: 5px;
+.header-tab-project:active,.header-tab-project:hover{
+  background-color:#2e2d35
 }
-
-.header-tab-project:hover,
-.header-tab-project:active {
-  background-color: #2e2d35;
+.header-tab-project-close-button:hover{
+  background-color:#3b3a42
 }
-
-.header-tab-project-close-button:hover {
-  background-color: #3b3a42;
+#bottom-header{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 15px;
+  background:#2b2a33;
+  padding-right:17px
 }
-
-/* Bottom header */
-#bottom-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  background: #2b2a33;
-  padding-right: 17px;
+#header-path{
+  flex-grow:1;
+  background-color:#1c1b22;
+  padding:4px;
+  display:flex;
+  border-radius:5px;
+  overflow:hidden
 }
-
-#header-path {
-  flex-grow: 1;
-  background-color: #1c1b22;
-  margin-left: 120px;
-  margin-right: 272px;
-  padding: 4px;
-  display: flex;
-  border-radius: 5px;
+.bottom-header-left-menu,.bottom-header-right-menu{
+  all:unset;
+  text-align:center
 }
-
-
-.bottom-header-right-menu,
-.bottom-header-left-menu {
-  all: unset;
-  text-align: center;
+.bottom-header-left-menu{
+  margin-right:15px
 }
-
-.bottom-header-left-menu {
-  margin-right: 15px;
+.header-bottom-path{
+  flex:1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
 }
-
-.header-bottom-path {
-  flex: 1; 
-  white-space: nowrap;
-  overflow: hidden;
+#bottom-header-path-left-content{
+  display:flex;
+  align-items:center
 }
-
-
-#bottom-header-path-left-content {
-  display: flex;
-  align-items: center;
+#bottom-header-path-right-content{
+  margin-left:auto
 }
-
-#bottom-header-path-right-content {
-  margin-left: auto;
+#iframe-website{
+  overflow-y:scroll;
+  height: calc(100% - 89px); /* 89px is the size of the header */
 }

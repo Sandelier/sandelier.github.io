@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        </div>
+        <div id="backColor">
+        </div>
+        <div id="backgroundImage"></div>
+        <!-- Have to make it more accurate later on because
+             The letters arent actually veritcally in the center instead they are always off by little bit which is very annoying.
+        -->
+        <div id="content">
+            <ul id="bullet">
+                <li>
+                    <!-- I am not sure why i added ahrefs to it but well i am too lazy to change them.-->
+                    <a href="#">
+                        <span>W</span>
+                        <div class="divContentStyle">
+                            <h1>What is Web-forge?</h1>
+                            <span>Web-forge is a command-line tool designed to launch multiple browsers with temporary extensions with automatic reloading. This tool is built to work with npm and is compatible with Chrome, Edge and Brave but there will be more browsers later on.</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>W</span>
+                        <div class="divContentStyle">
+                            <h1>Why</h1>
+                            <span>I made this because while i was making the MangaPresence program i started to get little bit annoyed by having to always manually update the changes in extension and i wanted to always have an clean browser.</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>L</span>
+                        <div class="divContentStyle">
+                            <h1>Learned</h1>
+                            <span>I learned a ton in this one too in example i haave never done any commandline tools before or librarys either and like i have never tried to inject scripts and etc.</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>C</span>
+                        <div class="divContentStyle">
+                            <h1>Challenges</h1>
+                            <span>There were some challenges that i had to figure out like in example how could i launch browsers since you cant use like start chrome in example because you cant detect the on close event from it.</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>M</span>
+                        <div class="divContentStyle">
+                            <h1>Main thing</h1>
+                            <span>The main thing i wanted to focus on was that it would work without too many external librarys and make it actually user friendly so that i could use it too.</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </body>
+    <script>
+        
+        // Would have done this in css but i dont know if you can actually make it
+        // That it would go up infinitely instead with css i think it would just always have to at some point go back to down and reset.
+
+        var background = document.getElementById("backgroundImage");
+        var yPos = 0;
+        
+        setInterval(function() {
+            background.style.backgroundPosition = 'right ' + yPos + 'px';
+            yPos--;
+        }, 30);
+    </script>
+</html>

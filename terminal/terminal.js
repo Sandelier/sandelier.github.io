@@ -6,19 +6,13 @@
 
 const allProjects = {
     "Extensions": {
-        "MangaPresence": {
-            "Description": "MangaPresence is a browser extension that, with a node.js server, updates your Discord rich presence based on the manga or anime you're currently reading/watching."
-        }
+        "MangaPresence": {}
     },
     "Librarys": {
-        "Web-forge": {
-            "Description": "Web-forge is a command-line tool designed to launch multiple browsers with temporary extensions with automatic reloading."
-        }
+        "Web-forge": {}
     },
     "Websites": {
-        "github.io": {
-            "Description": "Website to tell about myself and showcase my different projects and talk little bit more behind the scene stuff about the projects."
-        }
+        "github.io": {}
     }
 };
 
@@ -80,7 +74,7 @@ class DirectoryManager {
 
     // Sends all sub directorys to terminal
     sendCurrentSubDirs() {
-        const subdirectories = Object.keys(this.currentDirectory).filter(directory => directory !== 'Description'); // I dont wanna think rn so i will just hardcode the description check
+        const subdirectories = Object.keys(this.currentDirectory); 
         
         if (subdirectories.length === 0) {
             sendToTerminal('', 'There are no subdirectories in this path.');
@@ -99,9 +93,7 @@ class DirectoryManager {
     // Used for read without arguments to check if you are in a correct directory to read.
     checkForSubDirs() {
         for (const directory in this.currentDirectory) {
-            if (directory != "Description") { // I dont wanna think rn so i will just hardcode the description check.
-                return false;
-            }
+            return false;
         }
         return this.currentPath[this.currentPath.length-1];
     }
@@ -185,7 +177,7 @@ function sendEmptyToTerminal() {
 // Sends startup message.
 function sendStartUpMessage() {
     sendToTerminal('', 'Sandelier.github.io [Version 1.0.0] Date: 3.9.2023');
-    sendToTerminal('', 'Every design is from Windows 11.');
+    sendToTerminal('', 'Terminal design is from Windows 11.');
     sendEmptyToTerminal();
 }
 sendStartUpMessage();
@@ -196,7 +188,7 @@ function unknownCommand(command) {
 
 function launchCommand(commandMessage) {
     const commandMap = {
-        'read': ['type'],
+        'read': ['type', 'open'],
         'list': ['li', 'dir'],
         'help': [],
         'aboutme': ['bio', 'profile', 'whoami', 'about', 'readme'],
@@ -235,7 +227,7 @@ function launchCommand(commandMessage) {
                     directoryManager.changeDirectory(messageSplitted[1]);
                     terminalInputLocation.textContent = `${directoryManager.getCurrentPath()}>`;
                 } catch (error) {
-                    console.log(error.message);
+                    sendToTerminal('', error.message);
                 }
                 break;
         }
@@ -251,13 +243,20 @@ function launchCommand(commandMessage) {
     unknownCommand(command);
 }
 
+let samePageCheck;
 function handleRead(argument) {
     if (argument) {
 
     } else {
         const checkForSubDirs = directoryManager.checkForSubDirs();
         if (checkForSubDirs) {
-            sendToTerminal('', `Opening ${checkForSubDirs}`);
+            if (samePageCheck != checkForSubDirs) {
+                sendToTerminal('', `Opening ${checkForSubDirs}`);
+                window.parent.postMessage(directoryManager.getCurrentPath(), "*");
+                samePageCheck = checkForSubDirs;
+            } else {
+                sendToTerminal('', `Not opening a new page because it's the same as the current one.`);
+            }
         } else {
             sendToTerminal('', `Was unable to find an file to read. Use 'help' for commands `);
         }
@@ -283,7 +282,7 @@ function sendHelp() {
     sendEmptyToTerminal();
     sendToTerminal('', 'cd [path] : Changes directory. You can use "cd .." to go back in the path');
     sendToTerminal('', 'cl/clean/cls : Clears the window');
-    sendToTerminal('', 'read/type [project_name] : Display project details');
+    sendToTerminal('', 'read/type/open [project_name] : Display project details');
     sendToTerminal('', 'list/li/dir : Lists subdirectorys');
     sendToTerminal('', 'help : Display this help message');
     sendToTerminal('', 'aboutme/bio/profile/whoami/about/readme : Display information about me.');

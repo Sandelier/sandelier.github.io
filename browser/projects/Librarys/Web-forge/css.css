@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  font-size: 16px;
+  overflow-y: scroll;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#backColor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #98FF98;
+}
+
+#backgroundImage {
+  background-image: url('backgroundImage.webp');
+  background-position: right bottom;
+  background-repeat: repeat-y;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 40% auto;
+  background-attachment: fixed;
+  background-clip: content-box;
+}
+
+
+#bullet {
+  position: absolute;
+  top: 50%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+  max-width: 100px;
+  min-width: 100px;
+  padding-left: 10%;
+  z-index: 1;
+}
+
+#bullet li {
+  position: relative;
+  margin-bottom: 16px;}
+
+.centered > a > span {
+  font-size: 120px;
+}
+
+.divContentStyle {
+  display: none;
+  position: absolute;
+  left: 200px;
+  top: 0px;
+  width: 500px;
+  max-height: 200px;
+  cursor: default;
+}
+
+.active {
+  display: block;
+}
+
+.pageDivStyling {
+  display: none;
+}
+
+.responsive {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.formStyling {
+  border: 1px solid #000;
+  border-radius: 25px;
+  text-align: center;
+  background: none;
+}
