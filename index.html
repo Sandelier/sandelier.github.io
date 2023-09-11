@@ -4,19 +4,46 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="index/Css/index.css">
+		<link rel="stylesheet" href="browser/browser.css">
 	</head>
 	<body>
-		<header>
-			<button class="raiseIndex" data-container="terminal">
-				<img src="terminal/terminalIcon.png">
-			</button>
-			<button class="raiseIndex" data-container="browser">
-				<img src="index/images/browser.png">
-			</button>
-		</header>
 		<div id="iframeContainer">
-			<div class="draggable-container" style="display: none;" data-container="browser">
-				<iframe width="100%" height="100%" frameborder="0" id="browserFrame" loading="lazy"></iframe>
+			<div class="draggable-container" id="browser-draggable" style="display: none;" data-container="browser">
+				<div id="browserFrame">
+					<header id="browser-header">
+						<div id="browser-top-header">
+							<div id="browser-header-logo"></div>
+							<div id="browser-header-content">
+								<div id="browser-header-tabs">
+									<div class="browser-header-tab-project">
+										<p class="browser-header-tab-project-file-path"></p>
+										<p class="browser-header-tab-project-close-button">X</p>
+									</div>
+								</div>
+							</div>
+							<div id="browser-header-modifyButtons">
+								<button class="browser-tab-right-menu">
+									<p>─</p>
+								</button>
+								<button class="browser-tab-right-menu">
+									<p>⧉</p>
+								</button>
+								<button class="browser-tab-right-menu-close">
+									<p>X</p>
+								</button>
+							</div>
+						</div>
+						<div id="browser-bottom-header">
+							<div id="browser-header-path">
+								<div id="browser-bottom-header-path-left-content">
+									<img src="" style="margin-right: 10px;">
+									<p class="browser-header-bottom-path"></p>
+								</div>
+							</div>
+						</div>
+					</header>
+					<iframe width="100%" frameborder="0" id="browser-iframe-website"></iframe>
+				</div>
 				<div class="iframe-handle"></div>
 				<div class="resize-handle"></div>
 			</div>
@@ -31,4 +58,5 @@
 	<script src="index/Javascripts/handleDrag.js"></script>
 	<script src="index/Javascripts/index.js"></script>
 	<script src="index/Javascripts/handleResize.js"></script>
+	<script src="browser/showPage.js"></script>
 </html>

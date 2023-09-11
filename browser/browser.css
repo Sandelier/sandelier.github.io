@@ -1,56 +1,55 @@
-*{
+#browserFrame {
   margin:0;
   padding:0;
-  box-sizing:border-box
-}
-body,html{
+  box-sizing:border-box;
   height:100%;
   background:#f0f0f0;
   overflow:hidden
 }
 
-header{
+#browser-header{
   display:flex;
   flex-direction:column;
   background:#333;
   color:#fff
 }
 
-#top-header{
+#browser-top-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding-right:4px;
-  background-color:#1c1b22
+  background-color:#1c1b22;
+  max-height: 40px;
 }
 
-#header-logo{
+#browser-header-logo{
   border-right:solid 1px gray;
   padding:3px 20px 35px 23px
 }
-#header-content{
+#browser-header-content{
   display:flex;
   align-items:center;
   flex-grow:1
 }
-#header-modifyButtons{
+#browser-header-modifyButtons{
   display:flex;
   align-items:center
 }
-.tab-right-menu,.tab-right-menu-close{
+.browser-tab-right-menu,.browser-tab-right-menu-close{
   all:unset;
   height:30px;
   width:40px;
   text-align:center;
   margin-left:10px
 }
-.tab-right-menu-close:hover{
+.browser-tab-right-menu-close:hover{
   background-color:#bb0808
 }
-.tab-right-menu:hover{
+.browser-tab-right-menu:hover{
   background-color:rgba(255,255,255,.1)
 }
-.header-tab-project{
+.browser-header-tab-project{
   display:flex;
   max-width:218px;
   max-height:59px;
@@ -61,21 +60,21 @@ header{
   padding:8px;
   border-radius:3px
 }
-.header-tab-project-file-path{
+.browser-header-tab-project-file-path{
   flex:1;
   white-space:nowrap;
   overflow:hidden
 }
-.header-tab-project-close-button{
+.browser-header-tab-project-close-button{
   padding-left:5px
 }
-.header-tab-project:active,.header-tab-project:hover{
+.browser-header-tab-project:active,.header-tab-project:hover{
   background-color:#2e2d35
 }
-.header-tab-project-close-button:hover{
+.browser-header-tab-project-close-button:hover{
   background-color:#3b3a42
 }
-#bottom-header{
+#browser-bottom-header{
   display:flex;
   flex-direction:row;
   justify-content:space-between;
@@ -84,7 +83,7 @@ header{
   background:#2b2a33;
   padding-right:17px
 }
-#header-path{
+#browser-header-path{
   flex-grow:1;
   background-color:#1c1b22;
   padding:4px;
@@ -92,27 +91,27 @@ header{
   border-radius:5px;
   overflow:hidden
 }
-.bottom-header-left-menu,.bottom-header-right-menu{
+.browser-bottom-header-left-menu,.browser-bottom-header-right-menu{
   all:unset;
   text-align:center
 }
-.bottom-header-left-menu{
+.browser-bottom-header-left-menu{
   margin-right:15px
 }
-.header-bottom-path{
+.browser-header-bottom-path{
   flex:1;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis
 }
-#bottom-header-path-left-content{
+#browser-bottom-header-path-left-content{
   display:flex;
   align-items:center
 }
-#bottom-header-path-right-content{
+#browser-bottom-header-path-right-content{
   margin-left:auto
 }
-#iframe-website{
+#browser-iframe-website{
   overflow-y:scroll;
-  height: calc(100% - 89px); /* 89px is the size of the header */
+  height: calc(100% - 118px); /* 118px is the size of the header */
 }
