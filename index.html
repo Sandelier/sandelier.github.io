@@ -4,9 +4,26 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="index/Css/index.css">
+		<link rel="stylesheet" href="index/Css/initialPage.css">
+		<link rel="stylesheet" href="index/Css/iframeContainer.css">
 		<link rel="stylesheet" href="browser/browser.css">
 	</head>
 	<body>
+		<div id="initialPage">
+			<div id="startUp">
+				<button id="startUp-powerBtn" onclick="startUp()"></button>
+			</div>
+			<div id="login-page">
+				<div id="login-page-opening-background">
+					<div id="login-page-opening-login-screen">
+						<h1>Sign in</h1>
+						<p>User: <ins>Sandelier</ins></p>
+						<p>Password: <ins>***********</ins></p>
+						<button id="login-page-signin-btn" onclick="signIn()">Sign in</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div id="iframeContainer">
 			<div class="draggable-container" id="browser-draggable" style="display: none;" data-container="browser">
 				<div id="browserFrame">
@@ -54,9 +71,8 @@
 			</div>
 		</div>
 	</body>
+	<script src="index/Javascripts/initialPage.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-	<script src="index/Javascripts/handleDrag.js"></script>
-	<script src="index/Javascripts/index.js"></script>
-	<script src="index/Javascripts/handleResize.js"></script>
+	<script src="index/Javascripts/frameInteraction.js"></script>
 	<script src="browser/showPage.js"></script>
 </html>
