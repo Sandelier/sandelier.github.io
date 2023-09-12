@@ -13,7 +13,8 @@ const allProjects = {
     },
     "Websites": {
         "github.io": {}
-    }
+    },
+    "FuturePlans": {}
 };
 
 const terminalInput = document.getElementById('terminal-input');

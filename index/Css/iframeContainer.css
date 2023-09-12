@@ -4,6 +4,7 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: stretch;
+	z-index: 0;
 }
 
 .draggable-container {

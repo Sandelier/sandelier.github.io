@@ -14,6 +14,9 @@ function startUp() {
     powerBtn.onclick = '';
 
     startUpPage.style.animation = 'fadeOut 2s linear forwards';
+    startUpPage.addEventListener('animationend', () => {
+        startUpPage.style.display = 'none';
+    }, { once: true });
 }
 
 
@@ -22,5 +25,9 @@ function signIn() {
     const iframeContainer = document.getElementById('iframeContainer');
 
     initialPage.style.animation = 'fadeOut 1s linear forwards';
+    initialPage.addEventListener('animationend', () => {
+        initialPage.style.display = 'none';
+    }, { once: true });
+
     iframeContainer.style.display = 'flex';
 }
