@@ -271,7 +271,12 @@ function sendAboutMe() {
     sendToTerminal('', 'About me:');
     sendToTerminal('', ' - I am 20 year old developer from finland');
     sendToTerminal('', ' - Currently my primary coding language is Javascript/Nodejs. I do know some Java and minimal amounth of Python.');
-    sendToTerminal('', ' - In freetime i usually either code, read mangas or play with my friends.');
+    sendToTerminal('', ' - In freetime i usually either code, read mangas or be with my friends.');
+    sendToTerminal('', ' - About Coding');
+    sendToTerminal('', '   * I first time got interested into coding in junior high school when i made minecraft scripts with Script plugin');
+    sendToTerminal('', '   * After that i had an year or two break until i started to actually code. My first coding language was Java');
+    sendToTerminal('', '   * i used Java for about i would say 2 months until i switched to Python for couple weeks and then into Javascript/Nodejs');
+    sendToTerminal('', '   * And that was the time i fell pretty much in love with coding and since then i have been coding multiple hours everyday');
     sendToTerminal('', ' - All my projects are typically MIT license because well i like to share my code and allow other people to modify it and etc.');
     sendToTerminal('', ' - About me made in 3.9.2023');
     sendEmptyToTerminal();

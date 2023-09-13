@@ -5,15 +5,17 @@
 	justify-content: space-between;
 	align-items: stretch;
 	z-index: 0;
+	margin: 10px;
 }
 
 .draggable-container {
 	position: absolute;
 	width: 50%;
-	min-width: 450px;
 	height: 590px;
 	user-select: none;
 	box-sizing: border-box;
+	max-width: 95vw;
+	max-height: 95vh;
 }
 
 #browser-draggable {
@@ -31,7 +33,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: calc(100% - 145px);
 	height: 40px;
 	background-color: #ccc;
 	cursor: move;
@@ -46,5 +48,5 @@
 	height: calc(100% + 20px);
 	top: -10px;
 	left: -10px;
-	background-color: red;
+	background: transparent;
 }

@@ -23,10 +23,6 @@
   max-height: 40px;
 }
 
-#browser-header-logo{
-  border-right:solid 1px gray;
-  padding:3px 20px 35px 23px
-}
 #browser-header-content{
   display:flex;
   align-items:center;
@@ -41,7 +37,10 @@
   height:30px;
   width:40px;
   text-align:center;
-  margin-left:10px
+  margin-left:10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .browser-tab-right-menu-close:hover{
   background-color:#bb0808
@@ -74,44 +73,8 @@
 .browser-header-tab-project-close-button:hover{
   background-color:#3b3a42
 }
-#browser-bottom-header{
-  display:flex;
-  flex-direction:row;
-  justify-content:space-between;
-  align-items:center;
-  padding:10px 15px;
-  background:#2b2a33;
-  padding-right:17px
-}
-#browser-header-path{
-  flex-grow:1;
-  background-color:#1c1b22;
-  padding:4px;
-  display:flex;
-  border-radius:5px;
-  overflow:hidden
-}
-.browser-bottom-header-left-menu,.browser-bottom-header-right-menu{
-  all:unset;
-  text-align:center
-}
-.browser-bottom-header-left-menu{
-  margin-right:15px
-}
-.browser-header-bottom-path{
-  flex:1;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis
-}
-#browser-bottom-header-path-left-content{
-  display:flex;
-  align-items:center
-}
-#browser-bottom-header-path-right-content{
-  margin-left:auto
-}
+
 #browser-iframe-website{
   overflow-y:scroll;
-  height: calc(100% - 118px); /* 118px is the size of the header */
+  height: calc(100% - 40px); /* 40px is the size of the header */
 }
