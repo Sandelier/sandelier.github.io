@@ -4,5 +4,7 @@ html {
 	flex-direction: column;
 	height: 100vh;
 	margin: 0;
-	background-color: green;
+	background-image: url('../images/background.jpg');
+	background-size: 100% 100%;
+    background-repeat: no-repeat;
 }

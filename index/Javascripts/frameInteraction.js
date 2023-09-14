@@ -1,5 +1,3 @@
-
-
 // Dragging
 
 let maxZIndex = 1;
@@ -7,35 +5,35 @@ let maxZIndex = 1;
 let positions = [];
 
 interact('.iframe-handle')
-  .draggable({
-    modifiers: [
-      interact.modifiers.restrictRect({
-        restriction: document.getElementById('iframeContainer')
-      })
-    ],
-    listeners: {
-      start(event) {
-        const handle = event.target;
-        const parentElement = handle.parentElement;
-        const dataContainer = parentElement.getAttribute("data-container");
-        if (!positions[dataContainer]) {
-          positions[dataContainer] = { x: 0, y: 0 };
-        }
-      },
-      move(event) {
-        const handle = event.target;
-        const parentElement = handle.parentElement;
-        const dataContainer = parentElement.getAttribute("data-container");
+    .draggable({
+        modifiers: [
+            interact.modifiers.restrictRect({
+                restriction: document.getElementById('iframeContainer')
+            })
+        ],
+        listeners: {
+            start(event) {
+                const handle = event.target;
+                const parentElement = handle.parentElement;
+                const dataContainer = parentElement.getAttribute("data-container");
+                if (!positions[dataContainer]) {
+                    positions[dataContainer] = { x: 0, y: 0 };
+                }
+            },
+            move(event) {
+                const handle = event.target;
+                const parentElement = handle.parentElement;
+                const dataContainer = parentElement.getAttribute("data-container");
 
-        positions[dataContainer].x += event.dx;
-        positions[dataContainer].y += event.dy;
+                positions[dataContainer].x += event.dx;
+                positions[dataContainer].y += event.dy;
 
-        parentElement.style.transform = `translate(${positions[dataContainer].x}px, ${positions[dataContainer].y}px)`;
-        parentElement.dataset.x = positions[dataContainer].x;
-        parentElement.dataset.y = positions[dataContainer].y;
-      },
-    },
-  });
+                parentElement.style.transform = `translate(${positions[dataContainer].x}px, ${positions[dataContainer].y}px)`;
+                parentElement.dataset.x = positions[dataContainer].x;
+                parentElement.dataset.y = positions[dataContainer].y;
+            },
+        },
+    });
 
 // Increasing z indexes when clicked.
 
@@ -72,52 +70,59 @@ reziseHandlers.forEach((iframe) => {
 interact('.resize-handle')
   .resizable({
     modifiers: [
-      interact.modifiers.restrictRect({
-        restriction: document.getElementById('iframeContainer')
-      })
+        interact.modifiers.restrictSize({
+          min: { width: 500, height: 100 }
+        })
     ],
     edges: { top: true, left: true, bottom: true, right: true },
     listeners: {
-      move(event) {
-        const handle = event.target;
-        const parentElement = handle.parentElement;
+      move: function (event) {
+        let { x, y } = event.target.dataset;
+
+        x = (parseFloat(x) || 0) + event.deltaRect.left;
+        y = (parseFloat(y) || 0) + event.deltaRect.top;
+
+        const parentElement = event.target.parentElement;
         const dataContainer = parentElement.getAttribute("data-container");
 
         if (!positions[dataContainer]) {
           positions[dataContainer] = { x: 0, y: 0 };
         }
 
-        const x = positions[dataContainer].x + event.deltaRect.left;
-        const y = positions[dataContainer].y + event.deltaRect.top;
+        const newX = positions[dataContainer].x + event.deltaRect.left;
+        const newY = positions[dataContainer].y + event.deltaRect.top;
 
+        // interact.js "restrictRect" dosent seem to be working for resizable so we have to check the iframecontainer ourself.
+        const parentContainer = document.getElementById("iframeContainer");
+        const parentRect = parentContainer.getBoundingClientRect();
+        const resizedElementRect = event.rect;
 
-        Object.assign(parentElement.style, {
-          width: `${event.rect.width - 20}px`, // -20px is the border from resize-handle
-          height: `${event.rect.height - 20}px`,
-          transform: `translate(${x}px, ${y}px)`
-        });
+        // Checking X / Width if it exceeds the iframecontainer
+        const xExceedsBoundary = newX < 0 || newX + resizedElementRect.width > parentRect.width;
 
-        positions[dataContainer].x = x;
-        positions[dataContainer].y = y;
+        const widthExceedsBoundary = event.rect.width > parentRect.width;
 
-        parentElement.dataset.x = x;
-        parentElement.dataset.y = y;
-      },
-    },
+        if (!xExceedsBoundary && !widthExceedsBoundary) {
+          parentElement.style.width = `${event.rect.width - (20 - 1)}px`; // 20px is resize-handle borders and 1px is from draggablecontainer border. 
+          parentElement.style.transform = `translate(${newX}px, ${positions[dataContainer].y}px)`;
+        }
+
+        // Checking Y / Height if it exceeds the iframecontainer
+        const yExceedsBoundary = newY < 0 || newY + resizedElementRect.height > parentRect.height;
+        const heightExceedsBoundary = event.rect.height > parentRect.height;
+
+        if (!yExceedsBoundary && !heightExceedsBoundary) {
+          parentElement.style.height = `${event.rect.height - (20 - 1)}px`; // 20px is resize-handle borders and 1px is from draggablecontainer border. 
+          parentElement.style.transform = `translate(${positions[dataContainer].x}px, ${newY}px)`;
+        }
+
+        // If both dosent exceed then we add the x and y to datacontainer.
+        if (!xExceedsBoundary && !yExceedsBoundary) {
+          Object.assign(event.target.dataset, { x, y });
+          positions[dataContainer].x = newX;
+          positions[dataContainer].y = newY;
+        }
+      }
+    }
   });
-
     
-// Raise z index.
-
-const raiseIndex = document.querySelectorAll('.raiseIndex');
-
-raiseIndex.forEach(button => {
-  button.addEventListener('click', () => {
-    const containerName = button.getAttribute('data-container');
-    const containers = document.querySelectorAll(`[data-container="${containerName}"]`);
-
-    containers.forEach(container => {
-      container.style.zIndex = maxZIndex++;
-    });
-  });
-});

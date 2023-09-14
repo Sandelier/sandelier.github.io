@@ -14,8 +14,7 @@
 	height: 590px;
 	user-select: none;
 	box-sizing: border-box;
-	max-width: 95vw;
-	max-height: 95vh;
+	border: solid 1px #E5E5E5;
 }
 
 #browser-draggable {
