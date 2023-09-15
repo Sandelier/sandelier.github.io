@@ -3,10 +3,13 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sandelier's Portfolio</title>
+		<meta name="description" content="Website to showcase Sandelier's portfolio">
 		<link rel="stylesheet" href="index/Css/index.css">
 		<link rel="stylesheet" href="index/Css/initialPage.css">
 		<link rel="stylesheet" href="index/Css/iframeContainer.css">
 		<link rel="stylesheet" href="browser/browser.css">
+		<link rel="stylesheet" href="notepad/notepad.css">
 	</head>
 	<body>
 		<div id="initialPage">
@@ -25,7 +28,7 @@
 			</div>
 		</div>
 		<div id="iframeContainer">
-			<div class="draggable-container" id="browser-draggable" style="display: none;" data-container="browser">
+			<div class="draggable-container" id="browser-draggable" data-container="browser">
 				<div id="browserFrame">
 					<header id="browser-header">
 						<div id="browser-top-header">
@@ -60,10 +63,81 @@
 				<div class="iframe-handle"></div>
 				<div class="resize-handle"></div>
 			</div>
+			<div class="draggable-container" id="notepad-draggable" data-container="notepad">
+				<div id="notepadFrame">
+					<header id="notepad-header">
+						<div id="notepad-top-header">
+							<div id="notepad-header-modifyButtons">
+								<button class="notepad-tab-right-menu">
+									<p>─</p>
+								</button>
+								<button class="notepad-tab-right-menu">
+									<p>⧉</p>
+								</button>
+								<button class="notepad-tab-right-menu-close">
+									<p>X</p>
+								</button>
+							</div>
+						</div>
+					</header>
+					<div id="notepad-textContainer">
+						<p>
+							- This is a website showcasing my (Sandelier's) portfolio.<br>
+							- Open the terminal on your desktop to begin.<br>
+							- Use "<b>li</b>" to list directories.<br>
+							- Navigate with "<b>cd 'directory'</b>" and go back with "<b>cd ..</b>".<br>
+							- Type "<b>help</b>" for a list of commands and some other commands.<br>
+							- Enter "<b>read</b>" in the last directory to visit the website.<br>
+							- Example: "<b>cd extensions/mangapresence</b>" then "<b>read</b>".<br>
+							- Then to navigate to web-forge after mangapresence: "<b>cd ../../Librarys/web-forge</b>".<br>
+							- For more pages, use "<b>li</b>" to see available options and navigate through cd.<br>
+						</p>
+					</div>
+				</div>
+				<div class="iframe-handle"></div>
+				<div class="resize-handle"></div>
+			</div>
+			<div class="dropdown">
+				<button class="dropbtn">☰</button>
+				<div class="dropdown-content">
+					<a href="#">Option 1</a>
+					<a href="#">Option 2</a>
+					<a href="#">Option 3</a>
+				</div>
+			</div>
+			<div id="program-shortcut">
+				<div class="program-shortcut-button" ondblclick="activateProgram('terminal')">
+				  <button class="program-shortcut-buttons" id="program-shortcut-terminal"></button>
+				  <p>Terminal</p>
+				</div>
+				<div class="program-shortcut-button" ondblclick="activateProgram('browser')">
+				  <button class="program-shortcut-buttons" id="program-shortcut-browser"></button>
+				  <p>Browser</p>
+				</div>
+				<div class="program-shortcut-button" ondblclick="activateProgram('notepad')">
+					<button class="program-shortcut-buttons" id="program-shortcut-notepad"></button>
+					<p>Important</p>
+				</div>
+			</div>
 		</div>
 	</body>
 	<script src="index/Javascripts/initialPage.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-	<script src="index/Javascripts/frameInteraction.js"></script>
+	<script src="index/Javascripts/frameModifying.js"></script>
 	<script src="browser/showPage.js"></script>
+
+	<script>
+
+	// It gets the clicked element <p> children and tries to find the draggable-container that has data-container with same text
+	const draggableConts = document.querySelectorAll('.draggable-container');
+	function activateProgram(dataText) {
+
+        draggableConts.forEach(container => {
+            if (container.getAttribute('data-container') === dataText) {
+				container.style.display = "block";
+				container.style.zIndex = maxZIndex++;
+            }
+        });
+    }
+	</script>
 </html>

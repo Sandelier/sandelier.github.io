@@ -1,0 +1,59 @@
+
+
+#notepadFrame {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    background: #f0f0f0;
+    overflow: hidden;
+}
+
+#notepad-header {
+    display: flex;
+    flex-direction: column;
+    background: #333;
+    color: #fff;
+}
+
+#notepad-top-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 4px;
+    background-color: #1c1b22;
+    max-height: 40px;
+    height: 40px;
+}
+
+#notepad-header-modifyButtons {
+    display: flex;
+    align-items: center;
+}
+
+.notepad-tab-right-menu-close,
+.notepad-tab-right-menu {
+    all: unset;
+    height: 30px;
+    width: 40px;
+    text-align: center;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notepad-tab-right-menu-close:hover{
+  background-color:#bb0808
+}
+
+.notepad-tab-right-menu:hover{
+  background-color:rgba(255,255,255,.1)
+}
+
+#notepad-textContainer {
+    padding: 0px 5px 0px 5px;
+    font-size: 20px;
+    overflow: scroll;
+    height: 100%;
+}

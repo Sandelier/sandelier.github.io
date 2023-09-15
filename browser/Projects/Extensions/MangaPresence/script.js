@@ -1,18 +1,18 @@
 const leftPageContent = document.querySelector('#left-page .page-content');
 const rightPageContent = document.querySelector('#right-page .page-content');
+const paragraphs = document.querySelectorAll('.page-content .page-text p');
 
 function doesContentOverflow(element) {
     return element.offsetHeight < element.scrollHeight;
 }
 
-// Basically loops and makes font smaller until it won't overflow anymore.
 let minFontSize = 10;
 
+ // Binary search for getting the font since an normal while loop is 2x slower then this which was causing issues with chrome rendering because of forced reflow.
 function adjustFontSizeToFitPage(pageContent, pageText) {
     let minSize = minFontSize;
-    let maxSize = 30; 
+    let maxSize = 30;
 
-    // Binary search for getting the font since an normal while loop is 2x slower then this which was causing issues with chrome rendering because of forced reflow.
     while (minSize < maxSize) {
         const midSize = Math.ceil((minSize + maxSize) / 2);
         pageText.style.fontSize = midSize + 'px';
@@ -24,35 +24,39 @@ function adjustFontSizeToFitPage(pageContent, pageText) {
         }
     }
 
-    pageText.style.fontSize = minSize-1 + 'px';
+    return minSize - 1;
 }
 
 function adjustFontSizeToFitPages() {
-    let paragraphs = document.querySelectorAll('.page-content .page-text p');
+    const leftLines = paragraphs[0].innerHTML.split('<br>');
+    const rightLines = paragraphs[1].innerHTML.split('<br>');
+    const averageLines = (leftLines.length + rightLines.length) / 2;
 
-    let leftLines = paragraphs[0].innerHTML.split('<br>');
-    let rightLines = paragraphs[1].innerHTML.split('<br>');
-    let averageLines = (leftLines.length + rightLines.length) / 2;
+    console.log("Left: ", leftLines.length*20);
+    console.log("Right: ", rightLines.length*20);
 
-    adjustFontSizeToFitPage(leftPageContent, paragraphs[0]);
-    adjustFontSizeToFitPage(rightPageContent, paragraphs[1]);
+    const leftFontSize = adjustFontSizeToFitPage(leftPageContent, paragraphs[0]);
+    const rightFontSize = adjustFontSizeToFitPage(rightPageContent, paragraphs[1]);
 
-
-    while (leftLines.length > averageLines) { // Makes it so both divs have around the same line count.
-        let lastLine = leftLines.pop();
+    while (leftLines.length > averageLines) {  // Makes it so both divs have around the same line count.
+        const lastLine = leftLines.pop();
         rightLines.unshift(lastLine);
     }
 
     paragraphs[0].innerHTML = leftLines.join('<br>');
     paragraphs[1].innerHTML = rightLines.join('<br>');
+
+    paragraphs[0].style.fontSize = leftFontSize + 'px';
+    paragraphs[1].style.fontSize = rightFontSize + 'px';
+
 }
+
 adjustFontSizeToFitPages();
 
-var resizeTimer;
+let resizeTimer;
 window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    // Debounce timer because the resize calls so many events so we dont really wanna adjust it for every update.
-    resizeTimer = setTimeout(function () {
+    cancelAnimationFrame(resizeTimer);
+    resizeTimer = requestAnimationFrame(function () {
         adjustFontSizeToFitPages();
-    }, 200);
+    });
 });
