@@ -18,7 +18,7 @@ const allProjects = {
 };
 
 const terminalInput = document.getElementById('terminal-input');
-const messagesContainer = document.getElementById('messages-container');
+const messagesContainer = document.getElementById('terminal-messages-container');
 const terminalWindow = document.getElementById('terminal-window');
 const terminalInputLocation = document.getElementById('terminal-input-location');
 
@@ -104,7 +104,7 @@ class DirectoryManager {
     }
 }
   
-const directoryManager = new DirectoryManager();
+let directoryManager = new DirectoryManager(); // This is let only because of the "resetDefaults" function.
 let previousCommands = [];
 let currentCommandIndex = -1;
 
@@ -244,20 +244,15 @@ function launchCommand(commandMessage) {
     unknownCommand(command);
 }
 
-let samePageCheck;
 function handleRead(argument) {
     if (argument) {
 
     } else {
         const checkForSubDirs = directoryManager.checkForSubDirs();
         if (checkForSubDirs) {
-            if (samePageCheck != checkForSubDirs) {
-                sendToTerminal('', `Opening ${checkForSubDirs}`);
-                window.parent.postMessage(directoryManager.getCurrentPath(), "*");
-                samePageCheck = checkForSubDirs;
-            } else {
-                sendToTerminal('', `Not opening a new page because it's the same as the current one.`);
-            }
+            sendToTerminal('', `Opening ${checkForSubDirs}`);
+            window.parent.postMessage(directoryManager.getCurrentPath(), "*"); // dont need this anymore since terminal is not iframe anymore.
+            samePageCheck = checkForSubDirs;
         } else {
             sendToTerminal('', `Was unable to find an file to read. Use 'help' for commands `);
         }
@@ -293,4 +288,12 @@ function sendHelp() {
     sendToTerminal('', 'help : Display this help message');
     sendToTerminal('', 'aboutme/bio/profile/whoami/about/readme : Display information about me.');
     sendEmptyToTerminal();
+}
+
+
+function terminalResetToDefaults() {
+    directoryManager = new DirectoryManager();
+    previousCommands = [];
+    currentCommandIndex = -1;
+    sendStartUpMessage();
 }

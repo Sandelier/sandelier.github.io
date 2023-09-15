@@ -2,6 +2,9 @@ const leftPageContent = document.querySelector('#left-page .page-content');
 const rightPageContent = document.querySelector('#right-page .page-content');
 const paragraphs = document.querySelectorAll('.page-content .page-text p');
 
+
+// Someday have to optimize this because it is quite resource intensive.
+
 function doesContentOverflow(element) {
     return element.offsetHeight < element.scrollHeight;
 }
@@ -27,36 +30,41 @@ function adjustFontSizeToFitPage(pageContent, pageText) {
     return minSize - 1;
 }
 
-function adjustFontSizeToFitPages() {
+// Splits the content between each page.
+function splitContent() {
     const leftLines = paragraphs[0].innerHTML.split('<br>');
     const rightLines = paragraphs[1].innerHTML.split('<br>');
     const averageLines = (leftLines.length + rightLines.length) / 2;
 
-    console.log("Left: ", leftLines.length*20);
-    console.log("Right: ", rightLines.length*20);
-
-    const leftFontSize = adjustFontSizeToFitPage(leftPageContent, paragraphs[0]);
-    const rightFontSize = adjustFontSizeToFitPage(rightPageContent, paragraphs[1]);
-
-    while (leftLines.length > averageLines) {  // Makes it so both divs have around the same line count.
+    while (leftLines.length > averageLines) {
         const lastLine = leftLines.pop();
         rightLines.unshift(lastLine);
     }
 
     paragraphs[0].innerHTML = leftLines.join('<br>');
     paragraphs[1].innerHTML = rightLines.join('<br>');
+}
+
+let firstTime = true;
+function adjustFontSizeToFitPages() {
+    if (firstTime) {
+        firstTime = false;
+        splitContent();
+    }
+
+    const leftFontSize = adjustFontSizeToFitPage(leftPageContent, paragraphs[0]);
+    const rightFontSize = adjustFontSizeToFitPage(rightPageContent, paragraphs[1]);
 
     paragraphs[0].style.fontSize = leftFontSize + 'px';
     paragraphs[1].style.fontSize = rightFontSize + 'px';
-
 }
 
 adjustFontSizeToFitPages();
 
 let resizeTimer;
 window.addEventListener('resize', function() {
-    cancelAnimationFrame(resizeTimer);
-    resizeTimer = requestAnimationFrame(function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
         adjustFontSizeToFitPages();
-    });
+    }, 100);
 });

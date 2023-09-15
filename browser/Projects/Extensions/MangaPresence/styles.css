@@ -103,6 +103,7 @@ body {
 @font-face {
     font-family: 'MSMINCHO'; 
     src: url('MSMINCHO.woff2') format('woff2');
+    font-display: swap;
 }
 
 p,

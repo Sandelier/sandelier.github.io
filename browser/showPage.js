@@ -15,13 +15,10 @@ function changePage(title, filePath, icon) {
     console.log(filePath.slice(projectsIndex));
 }
 
-const draggableContainers = document.querySelectorAll('.draggable-container');
 
 window.addEventListener('message', event => {
 
-    draggableContainers.forEach(container => {
-        container.style.display = 'block';
-    });
+    activateProgram("browser");
 
     const pathParts = event.data.replace(/\\/g, '/').split('/');
 

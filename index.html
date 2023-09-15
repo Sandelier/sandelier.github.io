@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="index/Css/iframeContainer.css">
 		<link rel="stylesheet" href="browser/browser.css">
 		<link rel="stylesheet" href="notepad/notepad.css">
+		<link rel="stylesheet" href="terminal/terminal.css">
 	</head>
 	<body>
 		<div id="initialPage">
@@ -35,31 +36,72 @@
 							<div id="browser-header-content">
 								<div id="browser-header-tabs">
 									<div class="browser-header-tab-project">
-										<p class="browser-header-tab-project-file-path"></p>
+										<p class="browser-header-tab-project-file-path removableData"></p>
 										<p class="browser-header-tab-project-close-button">X</p>
 									</div>
 								</div>
 							</div>
 							<div id="browser-header-modifyButtons">
-								<button class="browser-tab-right-menu">
+								<button class="browser-tab-right-menu" onclick="minProgram('browser')" aria-label="Minimize Browser">
 									<p>─</p>
 								</button>
-								<button class="browser-tab-right-menu">
+								<button class="browser-tab-right-menu" onclick="maxiProgram('browser')" aria-label="Maximize Browser">
 									<p>⧉</p>
 								</button>
-								<button class="browser-tab-right-menu-close">
+								<button class="browser-tab-right-menu-close" onclick="closeProgram('browser')" aria-label="Close Browser">
 									<p>X</p>
 								</button>
 							</div>
 						</div>
 					</header>
-					<iframe width="100%" frameborder="0" id="browser-iframe-website"></iframe>
+					<iframe width="100%" frameborder="0" id="browser-iframe-website" class="removableData" title="Browser Website"></iframe>
 				</div>
 				<div class="iframe-handle"></div>
 				<div class="resize-handle"></div>
 			</div>
 			<div class="draggable-container" data-container="terminal">
-				<iframe src="terminal/terminal.html" width="100%" height="100%" frameborder="0"></iframe>
+				<div id="terminal-container">
+					<header id="terminal-header">
+						<div class="terminal-flex-container">
+							<div id="terminal-tab">
+								<div id="terminal-tab-inner">
+									<img src="terminal/terminalIcon.png" alt="Terminal Icon" style="width: 16px; height: 13px;" loading="lazy">
+									<p>Command prompt</p>
+								</div>
+							<!-- These are pretty much just decoratives right now. Probably will take the buttons away someday-->
+							<button class="terminal-button-tab">
+								<p>X</p>
+							</button>
+							<div id="terminal-empty-space"></div>
+							</div>
+							<button class="terminal-button-tab" style="border-right: 1px solid #3a3a3a">
+								<p>+</p>
+							</button>
+							<button class="terminal-button-tab">
+								<p>v</p>
+							</button>
+						</div>
+						<div id="terminal-menu">
+							<button class="terminal-tab-right-menu" onclick="minProgram('terminal')" aria-label="Minimize Terminal">
+								<p>-</p>
+							</button>
+							<button class="terminal-tab-right-menu" onclick="maxiProgram('terminal')" aria-label="Maximize Terminal">
+								<p>▢</p>
+							</button>
+							<button class="terminal-tab-right-menu-close" onclick="closeProgram('terminal')" aria-label="Close Terminal">
+								<p>X</p>
+							</button>
+						</div>
+					</header>
+					<div id="terminal-window">
+						<div id="terminal-messages-container" class="removableData"></div>
+						
+						<div id="terminal-input-container">
+							<p id="terminal-input-location"></p>
+							<input type="text" id="terminal-input" aria-label="Terminal input">
+						</div>
+					</div>
+				</div>
 				<div class="iframe-handle"></div>
 				<div class="resize-handle"></div>
 			</div>
@@ -68,13 +110,13 @@
 					<header id="notepad-header">
 						<div id="notepad-top-header">
 							<div id="notepad-header-modifyButtons">
-								<button class="notepad-tab-right-menu">
+								<button class="notepad-tab-right-menu" onclick="minProgram('notepad')" aria-label="Minimize Notepad">
 									<p>─</p>
 								</button>
-								<button class="notepad-tab-right-menu">
+								<button class="notepad-tab-right-menu" onclick="maxiProgram('notepad')" aria-label="Maximize Notepad">
 									<p>⧉</p>
 								</button>
-								<button class="notepad-tab-right-menu-close">
+								<button class="notepad-tab-right-menu-close" onclick="closeProgram('notepad')" aria-label="Close Notepad">
 									<p>X</p>
 								</button>
 							</div>
@@ -97,47 +139,26 @@
 				<div class="iframe-handle"></div>
 				<div class="resize-handle"></div>
 			</div>
-			<div class="dropdown">
-				<button class="dropbtn">☰</button>
-				<div class="dropdown-content">
-					<a href="#">Option 1</a>
-					<a href="#">Option 2</a>
-					<a href="#">Option 3</a>
-				</div>
-			</div>
 			<div id="program-shortcut">
 				<div class="program-shortcut-button" ondblclick="activateProgram('terminal')">
-				  <button class="program-shortcut-buttons" id="program-shortcut-terminal"></button>
+				  <button class="program-shortcut-buttons" id="program-shortcut-terminal" aria-label="Terminal Shortcut"></button>
 				  <p>Terminal</p>
 				</div>
 				<div class="program-shortcut-button" ondblclick="activateProgram('browser')">
-				  <button class="program-shortcut-buttons" id="program-shortcut-browser"></button>
+				  <button class="program-shortcut-buttons" id="program-shortcut-browser" aria-label="Browser Shortcut"></button>
 				  <p>Browser</p>
 				</div>
 				<div class="program-shortcut-button" ondblclick="activateProgram('notepad')">
-					<button class="program-shortcut-buttons" id="program-shortcut-notepad"></button>
+					<button class="program-shortcut-buttons" id="program-shortcut-notepad" aria-label="Notepad Shortcut"></button>
 					<p>Important</p>
 				</div>
 			</div>
 		</div>
 	</body>
 	<script src="index/Javascripts/initialPage.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-	<script src="index/Javascripts/frameModifying.js"></script>
-	<script src="browser/showPage.js"></script>
-
-	<script>
-
-	// It gets the clicked element <p> children and tries to find the draggable-container that has data-container with same text
-	const draggableConts = document.querySelectorAll('.draggable-container');
-	function activateProgram(dataText) {
-
-        draggableConts.forEach(container => {
-            if (container.getAttribute('data-container') === dataText) {
-				container.style.display = "block";
-				container.style.zIndex = maxZIndex++;
-            }
-        });
-    }
-	</script>
+	<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js" defer></script>
+	<script src="index/Javascripts/frameModifying.js" defer></script>
+	<script src="browser/showPage.js" defer></script>
+	<script src="terminal/terminal.js" defer></script>
+	<script src="index/Javascripts/frameButtons.js" defer></script>
 </html>
