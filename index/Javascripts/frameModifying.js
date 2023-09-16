@@ -18,6 +18,7 @@ interact('.iframe-handle').draggable({
             if (!positions[dataContainer]) {
                 positions[dataContainer] = { x: 0, y: 0 };
             }
+
         },
         move(event) {
             const handle = event.target;
@@ -47,6 +48,12 @@ document.querySelectorAll('.iframe-handle').forEach(handle => {
       event.target.style.width = "100%";
       event.target.style.height = "100%";
     });
+    handle.addEventListener('mouseup', (event) => { // Have to have this because if user clicks once and dosent drag then the width and height wont go back default.
+        const parentElement = event.target.parentElement;
+        parentElement.style.zIndex = maxZIndex++;
+        event.target.style.width = "";
+        event.target.style.height = "";
+      });
 });
 
 

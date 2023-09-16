@@ -6,6 +6,21 @@ body {
     margin: 0;
 }
 
+/* Github link */
+#githubLink {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#githubLink img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+
+
+/* Book */
 #book-cover {
     background-image: url('CoverArtFront.png');
     background-color: black;

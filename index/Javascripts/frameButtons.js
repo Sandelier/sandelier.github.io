@@ -26,7 +26,9 @@ function closeProgram(dataText) {
         	while (data.firstChild) {
             	data.removeChild(data.firstChild);
         	}
-			data.src = ''; // for iframe in browser.
+			if (data.tagName === 'IFRAME') {
+				data.src = 'browser/default/default.html'; // for iframe in browser.
+			}
     	});
 		program.style.display = 'none';
 		program.style.width = '';

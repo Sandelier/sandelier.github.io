@@ -1,13 +1,11 @@
+html,
 body {
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('ConstructionTape.png'); /* https://www.istockphoto.com/fi/vektori/vektorin-varoitusnauha-rakenteilla-olevasta-tekstist%C3%A4-gm1390606052-447509200 */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: #f0f0f0;
+    background-color: #2f2f2f;
 }
 
 .container {
@@ -15,14 +13,7 @@ body {
 }
 
 p {
-    font-size: 24px;
+    font-size: 3vmax;
     margin-bottom: 20px;
-    background-color: white;
-    border: solid 2px black;
-    padding: 2px;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
+    color: white;
 }

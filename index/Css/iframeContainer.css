@@ -85,28 +85,34 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	cursor: pointer;
 }
 
 
-#program-shortcut-terminal {
-	background-image: url('../images/shortcuts/terminalIcon.png');
+#program-shortcut-terminal,
+#program-shortcut-browser,
+#program-shortcut-notepad,
+#program-shortcut-github {
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
+}
+
+#program-shortcut-terminal {
+	background-image: url('../images/shortcuts/terminalIcon.png');
 }
 
 #program-shortcut-browser {
 	background-image: url('../images/shortcuts/browser.png');
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
 }
 
 #program-shortcut-notepad {
 	background-image: url('../../notepad/notepadIcon.png');
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
+}
+
+#program-shortcut-github {
+	background-image: url('../../index/images/github.png');
+	filter: invert(100%); /* The image is black so we have to switch it to white. */
 }
 
 
