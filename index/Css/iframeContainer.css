@@ -115,8 +115,16 @@
 	filter: invert(100%); /* The image is black so we have to switch it to white. */
 }
 
+.highlighted {
+	background-color: gray;
+}
 
 .minimize-transition {
     transition: scale 0.1s !important;
     scale: 0 !important;
+}
+
+.exit-animation {
+	transition: opacity 0.1s !important;
+	opacity: 0 !important;
 }

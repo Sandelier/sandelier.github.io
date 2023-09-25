@@ -21,24 +21,30 @@ function activateProgram(dataText) {
 function closeProgram(dataText) {
 	const program = getProgram(dataText);
 	if (program) {
-		const removableDatas = program.querySelectorAll('.removableData');
-		removableDatas.forEach(data => {
-        	while (data.firstChild) {
-            	data.removeChild(data.firstChild);
-        	}
-			if (data.tagName === 'IFRAME') {
-				data.src = 'browser/default/default.html'; // for iframe in browser.
-			}
-    	});
-		program.style.display = 'none';
-		program.style.width = '';
-		program.style.height = '';
-		program.style.transform = '';
-		positions[dataText] = '';
+		program.classList.add("exit-animation");
+    	program.addEventListener("transitionend", function() {
+    	    program.style.display = "none";
+    	    program.classList.remove("exit-animation");
 
-        if (dataText === 'terminal') {
-            terminalResetToDefaults();
-        }
+			const removableDatas = program.querySelectorAll('.removableData');
+			removableDatas.forEach(data => {
+        		while (data.firstChild) {
+        	    	data.removeChild(data.firstChild);
+        		}
+				if (data.tagName === 'IFRAME') {
+					data.src = 'browser/default/default.html'; // for iframe in browser.
+				}
+    		});
+			program.style.display = 'none';
+			program.style.width = '';
+			program.style.height = '';
+			program.style.transform = '';
+			positions[dataText] = '';
+
+        	if (dataText === 'terminal') {
+        	    terminalResetToDefaults();
+        	}
+    	});
 	}
 }
 
