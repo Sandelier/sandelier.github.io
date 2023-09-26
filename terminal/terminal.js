@@ -14,6 +14,9 @@ const allProjects = {
     "Websites": {
         "github.io": {}
     },
+    "Programs": {
+        "Lang2Watch": {}
+    },
     "FuturePlans": {}
 };
 
@@ -203,7 +206,7 @@ function launchCommand(commandMessage) {
         return;
     }
 
-    const command = messageSplitted[0];
+    const command = messageSplitted[0].toLowerCase();
 
     const executeCommand = (command) => {
         switch (command) {
