@@ -77,15 +77,35 @@ function minProgram(dataText) {
 
 // Resizing containers if they go outside the window.
 let debounceCheck;
-window.addEventListener('resize', function() {
+const iframeContainer = document.getElementById('iframeContainer');
+
+window.addEventListener('resize', function () {
     clearTimeout(debounceCheck);
     debounceCheck = setTimeout(function () {
         for (const container of draggableConts) {
-			if (container.clientWidth > window.innerWidth || container.clientHeight > window.innerHeight) {
-				if (window.innerHeight > 100) {
-					maxiProgram(container.getAttribute('data-container'));
-				}
-			}
-		}
+            resizeContainerIfOutside(container);
+        }
     }, 200);
 });
+
+function resizeContainerIfOutside(container) {
+	if (window.getComputedStyle(container).display !== "none") {
+		if (isOutside(container)) {
+			maxiProgram(container.getAttribute('data-container'));
+		}
+	}
+}
+
+function isOutside(container) {
+    const containerRect = container.getBoundingClientRect();
+    const iframeRect = iframeContainer.getBoundingClientRect();
+    
+	const margin = 5;
+
+    return (
+        containerRect.right - margin > iframeRect.right ||
+        containerRect.left + margin < iframeRect.left ||
+        containerRect.bottom - margin > iframeRect.bottom ||
+        containerRect.top + margin < iframeRect.top
+    );
+}

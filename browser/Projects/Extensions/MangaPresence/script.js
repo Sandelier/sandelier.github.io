@@ -27,7 +27,7 @@ function adjustFontSizeToFitPage(pageContent, pageText) {
         }
     }
 
-    return minSize - 1;
+    return minSize;
 }
 
 // Splits the content between each page.
@@ -53,13 +53,14 @@ function adjustFontSizeToFitPages() {
     }
 
     const leftFontSize = adjustFontSizeToFitPage(leftPageContent, paragraphs[0]);
+
     const rightFontSize = adjustFontSizeToFitPage(rightPageContent, paragraphs[1]);
+
+
 
     paragraphs[0].style.fontSize = leftFontSize + 'px';
     paragraphs[1].style.fontSize = rightFontSize + 'px';
 }
-
-adjustFontSizeToFitPages();
 
 let resizeTimer;
 window.addEventListener('resize', function() {

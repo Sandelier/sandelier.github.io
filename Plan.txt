@@ -1,0 +1,33 @@
+
+
+Quality check:
+
+    Initial page
+        - Maybe it would be better to remove the background completely
+        - And make it so that at the center theres like an button to open the website and it has an animation of like pulsing first and then the last pulse would change the opacity of the intialpage.
+
+
+    Main page
+        - Could have an animation when program is opened like minimized has.
+        - Terminal icon is very low resolution.
+        - Highlighting of icons could stop if you click in the background.
+        - There should be something in the background. Maybe some kind of animation or something to make it better since currently its quite boring.
+        - Maybe in the background when you click anywhere it would make an small pulse animation.
+        - Maybe shortcuts could have an animation of scale: 1.1 or something when hovered over.
+
+
+    Browser
+        - The browser could have an default place with github logo as lets say an tooltip menu that when you hover it it shows the github logo and brings you to the projects github page.
+
+    Terminal   
+        - The text input could be fully inputfield or textarea and make it so you cant remove the path at the start. This would make it so even if the window is small the cursor is always at the last character.
+
+    Browser projects
+        - Mangapresence could have two pages so the landing page would have clean text of the book version and then another page would be the book version.
+        - CoverArtFront image could be optimized to lower the file size. Most likely would have to make it again with low file size in mind
+
+    Additions:
+        - Making Sources program to showcase all image/library sources.
+
+    Index.html  
+        - The code has lot of reusable code. Like all draggable containers have almost identical headers so those could be just copied with different data container.

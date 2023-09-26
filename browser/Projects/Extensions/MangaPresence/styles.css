@@ -4,38 +4,26 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
-
-/* Github link */
-#githubLink {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-#githubLink img {
-    max-width: 50px;
-    max-height: 50px;
-}
-
 
 
 /* Book */
 #book-cover {
-    background-image: url('CoverArtFront.png');
+    background-image: url('CoverArtFront.webp');
     background-color: black;
     background-position: center;
     background-repeat: no-repeat;
-    width: 42.5%; /* Half the size of book */
-    height: 90%;
+    width: 46.5%; /* Half the size of book */
+    height: 98%;
     position: absolute;
     display: block;
     background-size: contain;
 }
 
 #book {
-    width: 85%;
-    height: 90%;
+    width: 93%;
+    height: 99%;
     perspective: 1000px;
     position: relative;
     display: none;
@@ -67,15 +55,6 @@ body {
     transform: rotateY(358deg);
     display: flex;
     border-right: solid 10px black;
-}
-
-#book::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
 }
 
 .left-image {

@@ -4,21 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Open Book</title>
+    <title>MangaPresence</title>
 </head>
-<body>
-    <div id="githubLink">
-        <a href="https://github.com/Sandelier/MangaPresence" target="_blank">
-            <img src="../../../../index/images/github.png" alt="MangaPresence github">
-        </a>
-    </div>    
+<body> 
     <div style="display: flex; align-items: center;">
         <button id="book-cover">
         </button>
     </div>
     <div id="book">
         <div id="left-page">
-            <img src="fake-pages.png" class="left-image">
+            <img src="fake-pages.webp" class="left-image">
             <div class="page-content">
                 <div class="center-text">
                     <div class="page-text-header">Vol 1: Ch 40</div>
@@ -30,8 +25,8 @@
                         X stumbles upon a repository named "MangaPresence" and clicks on it as if something were forcing him. His curiosity piqued, he starts reading the project's description and README. <br>
                         Cut to Sandelier, sitting in a cozy, well-lit room filled with manga and anime posters. He's hunched over his computer, coding feverishly. He gets a notification on his Discord application.<br>
                         <i>Sandelier sees the notification from X</i> and opens it to find a message: "Hey, I came across MangaPresence on GitHub. Can you tell me more about it?"<br>
-                        <i>Sandelier smiles</i>, excited to share his project, and replies, "Sure, let's chat."<br><br>
-                        X: <i>"Leans in"</i> So, Sandelier, what exactly is this MangaPresence I found on GitHub?<br><br>
+                        <i>Sandelier smiles</i>, excited to share his project, and replies, "Sure, let's chat."<br>
+                        X: <i>"Leans in"</i> So, Sandelier, what exactly is this MangaPresence I found on GitHub?<br>
                         <i>Sandelier, with a hint of pride in his expression, starts explaining.</i><br>
                         Sandelier: MangaPresence is a brilliant browser extension with a Node.js server. It updates your Discord rich presence based on the manga or anime you're currently reading or watching.<br>
                         <i>X leans back in his chair, intrigued.</i> <br>
@@ -72,7 +67,7 @@
                     </p>
                 </div>
             </div>
-            <img src="fake-pages.png" class="right-image">
+            <img src="fake-pages.webp" class="right-image">
         </div>
     </div>
     <script src="script.js"></script>
@@ -81,9 +76,13 @@
         const bookCover = document.getElementById('book-cover');
 
         bookCover.addEventListener('click', () => {
-            bookCover.style.display = 'none';
-            book.style.display = 'block';
-            adjustFontSizeToFitPages();
+          bookCover.style.display = 'none';
+          book.style.display = 'block';
+        
+
+  setTimeout(() => {
+    adjustFontSizeToFitPages();
+            }, 1);
         });
     </script>
 </body>
