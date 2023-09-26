@@ -73,3 +73,19 @@ function minProgram(dataText) {
     	});
 	}
 }
+
+
+// Resizing containers if they go outside the window.
+let debounceCheck;
+window.addEventListener('resize', function() {
+    clearTimeout(debounceCheck);
+    debounceCheck = setTimeout(function () {
+        for (const container of draggableConts) {
+			if (container.clientWidth > window.innerWidth || container.clientHeight > window.innerHeight) {
+				if (window.innerHeight > 100) {
+					maxiProgram(container.getAttribute('data-container'));
+				}
+			}
+		}
+    }, 200);
+});
