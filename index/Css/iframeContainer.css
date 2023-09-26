@@ -16,7 +16,7 @@
 	height: 590px;
 	user-select: none;
 	box-sizing: border-box;
-	border: solid 1px black;
+	border: solid 1px rgb(176, 176, 176);
 	display: none;
 }
 
