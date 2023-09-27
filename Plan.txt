@@ -8,13 +8,8 @@ Quality check:
 
 
     Main page
-        - Could have an animation when program is opened like minimized has.
         - Terminal icon is very low resolution.
-        - Highlighting of icons could stop if you click in the background.
         - There should be something in the background. Maybe some kind of animation or something to make it better since currently its quite boring.
-        - Maybe in the background when you click anywhere it would make an small pulse animation.
-        - Maybe shortcuts could have an animation of scale: 1.1 or something when hovered over.
-
 
     Browser
         - The browser could have an default place with github logo as lets say an tooltip menu that when you hover it it shows the github logo and brings you to the projects github page.

@@ -18,6 +18,17 @@
 	box-sizing: border-box;
 	border: solid 1px rgb(176, 176, 176);
 	display: none;
+	animation: activate-animation 0.1s ease-in-out;
+}
+
+@keyframes activate-animation {
+	0% {
+		scale: 0;
+	}
+	100% {	
+		scale: 1;
+	}
+
 }
 
 #browser-draggable {
@@ -68,6 +79,11 @@
 	display: flex;
   	flex-direction: column;
   	align-items: center;
+}
+
+.program-shortcut-button:hover {
+    transition: scale 0.1s;
+    scale: 1.1;
 }
 
 .program-shortcut-button p {
@@ -129,4 +145,27 @@
 .exit-animation {
 	transition: opacity 0.1s !important;
 	opacity: 0 !important;
+}
+
+.pulse-effect {
+	position: absolute;
+	border-radius: 50%;
+	border: solid 2px rgba(255, 255, 255, 0.3);
+	animation: pulse-animation 0.5s ease-in-out;
+	z-index: 1;
+	width: 20px;
+	height: 20px;
+	user-select: none;
+}
+
+@keyframes pulse-animation {
+	0% {
+		transform: scale(0);
+		opacity: 1;
+	}
+	100% {	
+		transform: scale(4);
+		opacity: 0;
+	}
+
 }
