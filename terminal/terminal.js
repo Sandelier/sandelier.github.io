@@ -98,7 +98,7 @@ class DirectoryManager {
         } else {
             sendToTerminal('', '- List');
             for (const directory of subdirectories) {
-                sendToTerminal('', `- ${directory}`);
+                sendToTerminal('', `-- ${directory}`);
             }
             sendToTerminal('', '--');
         }

@@ -7,7 +7,6 @@ function highLightSelection(clickedEle) {
     clickedEle.classList.add('highlighted');
 }
 
-
 // Pulsing event when clicking background.
 iframeContainer.addEventListener('click', (event) => {
     if (event.target.id == "iframeContainer") {

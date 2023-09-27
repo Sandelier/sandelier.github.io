@@ -13,7 +13,7 @@
 .draggable-container {
 	position: absolute;
 	width: 50%;
-	height: 590px;
+	height: 60%;
 	user-select: none;
 	box-sizing: border-box;
 	border: solid 1px rgb(176, 176, 176);

@@ -123,15 +123,15 @@
 				<div class="resize-handle"></div>
 			</div>
 			<div id="program-shortcut">
-				<div class="program-shortcut-button" onclick="highLightSelection(this)" ondblclick="activateProgram('terminal')">
+				<div class="program-shortcut-button" onclick="highLightSelection(this)" ondblclick="activateProgram('terminal', this)">
 				  <button class="program-shortcut-buttons" id="program-shortcut-terminal" aria-label="Terminal Shortcut"></button>
 				  <p>Terminal</p>
 				</div>
-				<div class="program-shortcut-button" onclick="highLightSelection(this)" ondblclick="activateProgram('browser')">
+				<div class="program-shortcut-button" onclick="highLightSelection(this)" ondblclick="activateProgram('browser', this)">
 				  <button class="program-shortcut-buttons" id="program-shortcut-browser" aria-label="Browser Shortcut"></button>
 				  <p>Browser</p>
 				</div>
-				<div class="program-shortcut-button"  onclick="highLightSelection(this)" ondblclick="activateProgram('notepad')">
+				<div class="program-shortcut-button"  onclick="highLightSelection(this)" ondblclick="activateProgram('notepad', this)">
 					<button class="program-shortcut-buttons" id="program-shortcut-notepad" aria-label="Notepad Shortcut"></button>
 					<p>Important</p>
 				</div>

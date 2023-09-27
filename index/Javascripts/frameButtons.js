@@ -9,11 +9,14 @@ function getProgram(dataText) {
 	return false;
 }
 
-function activateProgram(dataText) {
+function activateProgram(dataText, clickedEle = null) {
 	const program = getProgram(dataText);
 	if (program) {
 		program.style.display = "block";
 		program.style.zIndex = maxZIndex++;
+		if (clickedEle) {
+			clickedEle.classList.remove('highlighted');
+		}
 	}
 }
 
