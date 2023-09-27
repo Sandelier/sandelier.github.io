@@ -15,19 +15,32 @@ const allProjects = {
         "github.io": {}
     },
     "Programs": {
-        "Lang2Watch": {}
+        "LangWatch2": {}
     },
-    "FuturePlans": {}
 };
 
 const terminalInput = document.getElementById('terminal-input');
 const messagesContainer = document.getElementById('terminal-messages-container');
 const terminalWindow = document.getElementById('terminal-window');
-const terminalInputLocation = document.getElementById('terminal-input-location');
 
 // Makes the input field to focus no matter where you click
 document.getElementById("terminal-container").addEventListener("click", function() {
     terminalInput.focus();
+});
+
+// Forces currentpath back if its not at the start.
+// In no way is this like perfect or anything but it does its job somewhat ig
+terminalInput.addEventListener("input", function() {
+    const currentPath = `${directoryManager.getCurrentPath()}>`;
+    const value = terminalInput.value;
+
+    if (!value.startsWith(currentPath)) {
+        if (value.includes(">")) {
+            terminalInput.value = currentPath + value.substring(value.lastIndexOf(">") + 1);
+        } else {
+            terminalInput.value = currentPath;
+        }
+    }
 });
 
 // Used to easily change directorys.
@@ -36,7 +49,7 @@ class DirectoryManager {
         this.currentDirectory = allProjects;
         this.directoryStack = []; // Directory stack contains the directorys we are currently in.
         this.currentPath = ["C:", "Users", "Sandelier", "Desktop", "Projects"]; // Initializing with the root path.
-        terminalInputLocation.textContent = `${this.getCurrentPath()}>`;
+        terminalInput.value = `${this.getCurrentPath()}>`;
     }
 
     // Used to do an case-insensitive check.
@@ -83,9 +96,11 @@ class DirectoryManager {
         if (subdirectories.length === 0) {
             sendToTerminal('', 'There are no subdirectories in this path.');
         } else {
+            sendToTerminal('', '- List');
             for (const directory of subdirectories) {
-                sendToTerminal('', directory);
+                sendToTerminal('', `- ${directory}`);
             }
+            sendToTerminal('', '--');
         }
     }
 
@@ -117,7 +132,7 @@ terminalInput.addEventListener('keydown', function (event) {
         case 'Enter': 
             event.preventDefault();
             const userInput = terminalInput.value;
-            terminalInput.value = '';
+            terminalInput.value = directoryManager.getCurrentPath() + ">";
 
             // Pushes the userinput to the previousCommands and it only has unique ones. If it has currently a same one then it will remove it and push the new one to the end.
             if (userInput.length >= 1) {
@@ -147,7 +162,7 @@ terminalInput.addEventListener('keydown', function (event) {
             // Clearing the input when you reach the end.
             } else if (currentCommandIndex === previousCommands.length - 1) {
                 currentCommandIndex = previousCommands.length;
-                terminalInput.value = '';
+                terminalInput.value = directoryManager.getCurrentPath() + ">";
             }
             break;
     }
@@ -159,7 +174,7 @@ function sendToTerminal(location, message, checkCommand = false) {
     const newMessage = document.createElement('p');
 
     if (1 <= location.length) {
-        newMessage.textContent = `${location}>${message}`;
+        newMessage.textContent = `${message}`;
     } else {
         newMessage.textContent = `${message}`;
     }
@@ -200,18 +215,17 @@ function launchCommand(commandMessage) {
         'cd': []
     };
 
-    const messageSplitted = commandMessage.split(' ');
-
-    if (messageSplitted.length === 0) {
+    const messageSplitted = commandMessage.match(/^(.*?)\s*>\s*(\w+)\s*(.*)$/);
+    if (messageSplitted && messageSplitted[2].length === 0) {
         return;
     }
 
-    const command = messageSplitted[0].toLowerCase();
+    const command = messageSplitted[2].toLowerCase();
 
     const executeCommand = (command) => {
         switch (command) {
             case 'read':
-                handleRead(messageSplitted[1]);
+                handleRead();
                 break;
             case 'list':
                 directoryManager.sendCurrentSubDirs();
@@ -228,8 +242,8 @@ function launchCommand(commandMessage) {
                 break;
             case 'cd':
                 try {
-                    directoryManager.changeDirectory(messageSplitted[1]);
-                    terminalInputLocation.textContent = `${directoryManager.getCurrentPath()}>`;
+                    directoryManager.changeDirectory(messageSplitted[3]);
+                    terminalInput.value = `${directoryManager.getCurrentPath()}>`;
                 } catch (error) {
                     sendToTerminal('', error.message);
                 }
@@ -249,7 +263,7 @@ function launchCommand(commandMessage) {
 
 function handleRead(argument) {
     if (argument) {
-
+        // I dont know if i will make the argument. Just leaving it here to remind me later on.
     } else {
         const checkForSubDirs = directoryManager.checkForSubDirs();
         if (checkForSubDirs) {

@@ -17,6 +17,9 @@ function activateProgram(dataText) {
 	}
 }
 
+
+const browserGithubLink = document.getElementById("browser-github-link");
+
 // This puts the display to none but also resets it.
 function closeProgram(dataText) {
 	const program = getProgram(dataText);
@@ -44,6 +47,9 @@ function closeProgram(dataText) {
         	if (dataText === 'terminal') {
         	    terminalResetToDefaults();
         	}
+
+			// Resetting the github link in browser back to normal. From showPage.js
+			browserGithubLink.href = "https://github.com/Sandelier/sandelier.github.io"
     	});
 	}
 }

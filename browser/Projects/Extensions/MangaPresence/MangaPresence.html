@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css">
     <title>MangaPresence</title>
 </head>
-<body> 
+<body>
     <div style="display: flex; align-items: center;">
         <button id="book-cover">
         </button>
@@ -74,14 +74,14 @@
     <script>
         const book = document.getElementById('book');
         const bookCover = document.getElementById('book-cover');
-
+            
         bookCover.addEventListener('click', () => {
-          bookCover.style.display = 'none';
-          book.style.display = 'block';
+            bookCover.style.display = 'none';
+            book.style.display = 'block';
         
-
-  setTimeout(() => {
-    adjustFontSizeToFitPages();
+        
+            setTimeout(() => {
+                adjustFontSizeToFitPages();
             }, 1);
         });
     </script>

@@ -2,6 +2,7 @@
 
 const headerTabProjectFilePath = document.querySelector('.browser-header-tab-project-file-path');
 const websiteIframe = document.getElementById("browser-iframe-website");
+const githubLinkHref = document.getElementById("browser-github-link");
 
 function changePage(filePath) {
 
@@ -9,6 +10,9 @@ function changePage(filePath) {
     
     const projectsIndex = filePath.indexOf('Projects');
     websiteIframe.src = ("browser/" + filePath.slice(projectsIndex));
+
+    const fileName = filePath.split('/').pop();
+    githubLinkHref.href = `https://github.com/Sandelier/${fileName.replace('.html', '')}`;
 }
 
 

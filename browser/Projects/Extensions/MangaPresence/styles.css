@@ -87,22 +87,18 @@ body {
     justify-content: center;
 }
 
+p,
+.page-text-header {
+    all: unset;
+    font-family: cursive, arial;
+}
+
+
 .page-text-header {
     border-bottom: 1px solid #585858;
     width: 50%;
     margin-bottom: 20px;
     text-align: center;
-}
-
-@font-face {
-    font-family: 'MSMINCHO'; 
-    src: url('MSMINCHO.woff2') format('woff2');
-    font-display: swap;
-}
-
-p,
-.page-text-header {
-    font-family: 'MSMINCHO', serif;
 }
 
 .page-text {
