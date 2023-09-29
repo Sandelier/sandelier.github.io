@@ -1,0 +1,113 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 10px;
+    display: flex;
+    width: 100%;
+    gap: 1%;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: background-color 0.4s;
+    background-color: #F2CB05;
+}
+
+#content {
+    flex: 1;
+    background-color: #267365;
+    transition: background-color 0.4s;
+    color: white;
+    position: relative;
+}
+
+.sourceBtns {
+    all: unset;
+    padding: 3px 5px 3px 5px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.active {
+    transition: scale 0.1s !important;
+    scale: 1.2 !important;
+}
+
+/* Content */
+
+.sideContainer {
+    position: absolute;
+    width: 20vw;
+    height: 80vh;
+    background: linear-gradient(to bottom, #181818, #000);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    max-height: 400px;
+}
+
+.sideContainer img {
+    max-width: 100%;
+    height: auto;
+    max-height: 20vh;
+    width: 100%;
+}
+
+.sideContainer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sideContainer ul li {
+    display: flex;
+    gap: 5px;
+}
+
+.sideContainer a {
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+
+/* Directions */
+.center {
+    width: 50vw;
+}
+
+.left {
+    left: 0;
+    cursor: pointer;
+    filter: blur(20px);
+}
+
+.left a,
+.right a {
+    pointer-events: none;
+}
+
+.right {
+    left: 100vw;
+    cursor: pointer;
+    filter: blur(20px);
+
+}
+
+.hidden {
+    display: none;
+}

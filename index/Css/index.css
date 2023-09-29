@@ -4,8 +4,9 @@ html {
 	flex-direction: column;
 	height: 100vh;
 	margin: 0;
-	background-image: url('../images/background.webp'); /* https://wallpapers.com/wallpapers/dark-desktop-vjdixpjx8d7nj7t2.html */
+	/*background-image: url('../images/background.webp'); /* https://wallpapers.com/wallpapers/dark-desktop-vjdixpjx8d7nj7t2.html */
 	background-size: 100% 100%;
     background-repeat: no-repeat;
 	overflow: hidden;
+	background: linear-gradient(to top left, #324f6f, #141446);
 }

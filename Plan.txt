@@ -2,21 +2,15 @@
 
 Plan:
     Initial page
-        - Maybe it would be better to remove the background completely
         - And make it so that at the center theres like an button to open the website and it has an animation of like pulsing first and then the last pulse would change the opacity of the intialpage.
-
-
-    Main page
-        - There should be something in the background. Maybe some kind of animation or something to make it better since currently its quite boring.
 
     Browser projects
         - Mangapresence could have two pages so the landing page would have clean text of the book version and then another page would be the book version.
-        
-    Additions:
-        - Making Sources program to showcase all image/library sources.
 
-    Index.html  
-        - The code has lot of reusable code. Like all draggable containers have almost identical headers so those could be just copied with different data container.
-        - Removing useless code like terminal is still sending messages to index even tho its not iframe anymroe.
+    Sources:
+        - Removing the header and making some other way of switching between the contents since currently theres two headers on top of eachother which looks bad.
 
-    Would have to refactor like the whole website or something. Lot of stuff are a mess.
+    All:
+        - Lot of functions could be made in a more readable way. 
+        - I feel like the folder structure is little bit of an mess right now.
+    

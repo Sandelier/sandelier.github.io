@@ -1,78 +1,3 @@
-#browserFrame {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  height:100%;
-  background:#f0f0f0;
-  overflow:hidden
-}
-
-#browser-header{
-  display:flex;
-  flex-direction:column;
-  background:#333;
-  color:#fff
-}
-
-#browser-top-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding-right:4px;
-  background-color:#1c1b22;
-  max-height: 40px;
-}
-
-#browser-header-content{
-  display:flex;
-  align-items:center;
-  flex-grow:1
-}
-#browser-header-modifyButtons{
-  display:flex;
-  align-items:center
-}
-.browser-tab-right-menu,.browser-tab-right-menu-close{
-  all:unset;
-  height:30px;
-  width:40px;
-  text-align:center;
-  margin-left:10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.browser-tab-right-menu-close:hover{
-  background-color:#bb0808
-}
-.browser-tab-right-menu:hover{
-  background-color:rgba(255,255,255,.1)
-}
-.browser-header-tab-project{
-  display:flex;
-  max-width:218px;
-  max-height:59px;
-  overflow:hidden;
-  margin-left:5px;
-  margin-right:5px;
-  font-size:13px;
-  padding:8px;
-  border-radius:3px
-}
-.browser-header-tab-project-file-path{
-  flex:1;
-  white-space:nowrap;
-  overflow:hidden
-}
-.browser-header-tab-project-close-button{
-  padding-left:5px
-}
-.browser-header-tab-project:active,.header-tab-project:hover{
-  background-color:#2e2d35
-}
-.browser-header-tab-project-close-button:hover{
-  background-color:#3b3a42
-}
 
 #browser-iframe-website{
   overflow-y:scroll;
@@ -90,6 +15,7 @@
   background-color: white;
   border-radius: 100%;
   border: 1px solid white;
+  box-shadow: -13px 13px 21px -5px rgba(0,0,0,0.7);
 }
 
 #browser-github-page:hover {

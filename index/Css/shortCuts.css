@@ -1,68 +1,4 @@
-#iframeContainer {
-	flex-grow: 1;
-	display: none; /* Changed to flex later */
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: stretch;
-	z-index: 0;
-	margin: 10px;
-	position: relative;
-	box-sizing: border-box;
-}
 
-.draggable-container {
-	position: absolute;
-	width: 50%;
-	height: 60%;
-	user-select: none;
-	box-sizing: border-box;
-	border: solid 1px rgb(176, 176, 176);
-	display: none;
-	animation: activate-animation 0.1s ease-in-out;
-}
-
-@keyframes activate-animation {
-	0% {
-		scale: 0;
-	}
-	100% {	
-		scale: 1;
-	}
-
-}
-
-#browser-draggable {
-	width: 70%;
-	height: 80%;
-}
-
-.resize-content {
-	width: 100%;
-	height: 100%;
-	border: none;
-}
-
-.iframe-handle {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: calc(100% - 145px);
-	height: 40px;
-	cursor: move;
-	opacity: 0.5;
-	z-index: 2;
-}
-
-.resize-handle {
-	position: absolute;
-	z-index: -1;
-	width: calc(100% + 20px);
-	height: calc(100% + 20px);
-	top: -10px;
-	left: -10px;
-	background: transparent;
-	box-sizing:	border-box;
-}
 
 /* Program shortcuts */
 #program-shortcut {
@@ -70,6 +6,7 @@
 	justify-content: space-between;
 	gap: 20px;
 	position: absolute;
+	margin: 20px;
 }
 
 .program-shortcut-button {
@@ -87,6 +24,8 @@
 }
 
 .program-shortcut-button p {
+	margin: 0;
+	padding: 0;
 	margin-top: 5px; 
 	color: white;
 	user-select: none;
@@ -110,7 +49,8 @@
 #program-shortcut-terminal,
 #program-shortcut-browser,
 #program-shortcut-notepad,
-#program-shortcut-github {
+#program-shortcut-github,
+#program-shortcut-sources {
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -133,18 +73,12 @@
 	filter: invert(100%); /* The image is black so we have to switch it to white. */
 }
 
+#program-shortcut-sources {
+	background-image: url('../../index/images/Sources.webp');
+}
+
 .highlighted {
-	background-color: gray;
-}
-
-.minimize-transition {
-    transition: scale 0.1s !important;
-    scale: 0 !important;
-}
-
-.exit-animation {
-	transition: opacity 0.1s !important;
-	opacity: 0 !important;
+	background-color: rgba(255, 255, 255, 0.3);
 }
 
 .pulse-effect {

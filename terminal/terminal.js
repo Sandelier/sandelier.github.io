@@ -24,9 +24,12 @@ const messagesContainer = document.getElementById('terminal-messages-container')
 const terminalWindow = document.getElementById('terminal-window');
 
 // Makes the input field to focus no matter where you click
-document.getElementById("terminal-container").addEventListener("click", function() {
-    terminalInput.focus();
-});
+const terminalFrame = document.querySelector('.draggable-container[data-container="terminal"] .program-frame');
+if (terminalFrame) {
+    terminalFrame.addEventListener("click", function() {
+        terminalInput.focus();
+    });
+}
 
 // Forces currentpath back if its not at the start.
 // In no way is this like perfect or anything but it does its job somewhat ig
@@ -268,7 +271,7 @@ function handleRead(argument) {
         const checkForSubDirs = directoryManager.checkForSubDirs();
         if (checkForSubDirs) {
             sendToTerminal('', `Opening ${checkForSubDirs}`);
-            window.parent.postMessage(directoryManager.getCurrentPath(), "*"); // dont need this anymore since terminal is not iframe anymore.
+            changePageFromTermianl(directoryManager.getCurrentPath()); // changePageFromTerminal is in "showPage.js" of browser directory.
             samePageCheck = checkForSubDirs;
         } else {
             sendToTerminal('', `Was unable to find an file to read. Use 'help' for commands `);
