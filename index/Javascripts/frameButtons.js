@@ -83,6 +83,26 @@ function minProgram(dataText) {
 	}
 }
 
+// Just resets the src of the iframe in browser.
+const browserIframe = document.getElementById('browser-iframe-website');
+const refreshButton = document.getElementById('browser-menu-refresh-button');
+const refreshText = refreshButton.querySelector('p');
+
+let canRefresh = true;
+function refreshSite() {
+	if (canRefresh) {
+	  browserIframe.src = browserIframe.src;
+	  canRefresh = false;
+	  refreshButton.style.cursor = 'default';
+	  refreshText.style.animation = 'rotateRefresh 10s linear infinite';
+  
+	  setTimeout(() => {
+		canRefresh = true;
+		refreshButton.style.cursor = 'pointer';
+		refreshText.style.animation = 'none';
+	  }, 10000);
+	}
+  }
 
 // Resizing containers if they go outside the window.
 let debounceCheck;

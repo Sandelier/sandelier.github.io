@@ -69,3 +69,6 @@ window.addEventListener('resize', function() {
         adjustFontSizeToFitPages();
     }, 100);
 });
+
+
+adjustFontSizeToFitPages(); // So we can load it right at the start when script has loaded. 

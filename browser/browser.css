@@ -4,6 +4,8 @@
   height: calc(100% - 40px); /* 40px is the size of the header */
 }
 
+
+
 /* Github image */
 #browser-github-page {
   position: absolute;

@@ -5,28 +5,49 @@ body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
+    background: linear-gradient(to top left , #2f89ce, #cf2790);
 }
 
+
+/* Start book */
+#startUp-container {
+    text-align: center;
+    transition: filter 0.5s ease;
+    position: relative;
+    cursor: pointer;
+    height: 80vh;
+    max-width: 100%; 
+    max-height: 100%;
+    overflow: hidden;
+  }
+  
+  #book-image {
+    width: 100%; 
+    height: 100%;
+  }
+
+#book-anim-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 100%;
+    transition: transform 0.5s ease, z-index 0.5s;
+    z-index: 2; 
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Book */
-#book-cover {
-    background-image: url('CoverArtFront.webp');
-    background-color: black;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 46.5%; /* Half the size of book */
-    height: 98%;
-    position: absolute;
-    display: block;
-    background-size: contain;
-}
 
 #book {
-    width: 93%;
+    width: 99%;
     height: 99%;
     perspective: 1000px;
     position: relative;
-    display: none;
+    display: block;
 }
 
 #left-page,

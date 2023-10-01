@@ -118,6 +118,7 @@
 .program-top-header-modifybuttons {
     display: flex;
     align-items: center;
+    z-index: 3; /* This has to be for the buttons to work correctly in browser. Lot of issues if you just add an class/id/inline style to fix the width of the iframe for browser. */
 }
 
 .program-tab-right-menu,
@@ -127,9 +128,8 @@
     width: 40px;
     text-align: center;
     margin-left: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    cursor: pointer;
+    line-height: 0;
 }
 
 .program-tab-right-menu-close:hover {
@@ -139,6 +139,15 @@
 .program-tab-right-menu:hover {
     background-color: rgba(255,255,255,0.1);
 }
+
+@keyframes rotateRefresh {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
 .minimize-transition {
     transition: scale 0.1s !important;

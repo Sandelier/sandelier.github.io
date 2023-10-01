@@ -3,89 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>MangaPresence</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div style="display: flex; align-items: center;">
-        <button id="book-cover">
-        </button>
+    <div id="startUp-container">
+        <img id="book-image" src="book.webp" alt="Book Image">
     </div>
-    <div id="book">
-        <div id="left-page">
-            <img src="fake-pages.webp" class="left-image">
-            <div class="page-content">
-                <div class="center-text">
-                    <div class="page-text-header">Vol 1: Ch 40</div>
-                </div>
-                <div class="page-text">
-                    <p>
-                        X, the investigator, sits behind a desk stacked high with papers and a dimly flickering computer screen. He's shrouded in shadows, engrossed in his research.<br>
-                        X clicks on his web browser and enters "GitHub". He begins scrolling through repositories, searching for something intriguing.
-                        X stumbles upon a repository named "MangaPresence" and clicks on it as if something were forcing him. His curiosity piqued, he starts reading the project's description and README. <br>
-                        Cut to Sandelier, sitting in a cozy, well-lit room filled with manga and anime posters. He's hunched over his computer, coding feverishly. He gets a notification on his Discord application.<br>
-                        <i>Sandelier sees the notification from X</i> and opens it to find a message: "Hey, I came across MangaPresence on GitHub. Can you tell me more about it?"<br>
-                        <i>Sandelier smiles</i>, excited to share his project, and replies, "Sure, let's chat."<br>
-                        X: <i>"Leans in"</i> So, Sandelier, what exactly is this MangaPresence I found on GitHub?<br>
-                        <i>Sandelier, with a hint of pride in his expression, starts explaining.</i><br>
-                        Sandelier: MangaPresence is a brilliant browser extension with a Node.js server. It updates your Discord rich presence based on the manga or anime you're currently reading or watching.<br>
-                        <i>X leans back in his chair, intrigued.</i> <br>
-                        X: Okay, I'm following you so far. But what's the story behind that icon I saw? What's the significance? <br>
-                        <i>Sandelier points to the icon on his laptop screen, excited to share its meaning.</i><br>
-                        Sandelier: The icon is a fusion of 'm' and 'p' for Manga and Presence. The space background represents the idea that "presence" surrounds us, just like the vastness of space.<br>
-                        <i>X leans forward again, now curious about what drove Sandelier to create this extension.</i><br>
-                        X: Got it, but what motivated you to create MangaPresence in the first place?<br>
-                        <i>Sandelier leans back, deep in thought.</i><br>
-                        Sandelier: I made MangaPresence because I wanted to know what manga and anime others were into. There was nothing out there that could show the exact pages someone's reading or watching.<br>
-                        <i>X nods</i><br>
-                        X: Interesting. What did you learn during the development of this project? <br>
-                        Sandelier: Well, it was my first-ever browser extension, and I dabbled with using the Windows tray for the program. I learned a lot along the way.<br>
-                        <i>X raises an eyebrow, curious about the challenges Sandelier faced.</i><br>
-                        X: I can imagine there were some challenges. Can you give me an example?<br>
-                        <i>Sandelier scratches his head, reminiscing about the hurdles he overcame.</i><br>
-                        Sandelier: Oh, certainly! One of the biggest challenges was extracting accurate data from various websites without knowing their structures. But I figured it out.<br>
-                        <i>X leans back again, wanting to know the main goal of the project.</i><br>
-                        X: Okay, so what was your main focus in creating MangaPresence?<br>
-                        <i>Sandelier leans forward, passionate about his vision.</i><br>
-                        Sandelier: My main focus was simplicity. I wanted it to be ready to use right out of the box, except for setting up the Discord bot client ID. Once that's done, it should work seamlessly without any further user interaction.<br>
-                        <i>X leans back once more, satisfied with the explanation.</i><br>
-                        X: Well, Sandelier, thanks for sharing the story behind MangaPresence.<br>
-                        <i>Sandelier grins and nods.</i><br>
-                        Sandelier: You're welcome, X! It's been a fantastic journey, and I'm thrilled to see more people using it.
-                    </p>                    
+    <div id="book-anim-container">
+        <div id="book">
+            <div id="left-page">
+                <img src="fake-pages.webp" class="left-image">
+                <div class="page-content">
+                    <div class="center-text">
+                        <div class="page-text-header">Vol 1: Ch 40</div>
+                    </div>
+                    <div class="page-text">
+                        <p>
+                            X, the investigator, sits behind a desk stacked high with papers and a dimly flickering computer screen. He's shrouded in shadows, engrossed in his research.<br>
+                            X clicks on his web browser and enters "GitHub". He begins scrolling through repositories, searching for something intriguing.
+                            X stumbles upon a repository named "MangaPresence" and clicks on it as if something were forcing him. His curiosity piqued, he starts reading the project's description and README. <br>
+                            Cut to Sandelier, sitting in a cozy, well-lit room filled with manga and anime posters. He's hunched over his computer, coding feverishly. He gets a notification on his Discord application.<br>
+                            <i>Sandelier sees the notification from X</i> and opens it to find a message: "Hey, I came across MangaPresence on GitHub. Can you tell me more about it?"<br>
+                            <i>Sandelier smiles</i>, excited to share his project, and replies, "Sure, let's chat."<br>
+                            X: <i>"Leans in"</i> So, Sandelier, what exactly is this MangaPresence I found on GitHub?<br>
+                            <i>Sandelier, with a hint of pride in his expression, starts explaining.</i><br>
+                            Sandelier: MangaPresence is a brilliant browser extension with a Node.js server. It updates your Discord rich presence based on the manga or anime you're currently reading or watching.<br>
+                            <i>X leans back in his chair, intrigued.</i> <br>
+                            X: Okay, I'm following you so far. But what's the story behind that icon I saw? What's the significance? <br>
+                            <i>Sandelier points to the icon on his laptop screen, excited to share its meaning.</i><br>
+                            Sandelier: The icon is a fusion of 'm' and 'p' for Manga and Presence. The space background represents the idea that "presence" surrounds us, just like the vastness of space.<br>
+                            <i>X leans forward again, now curious about what drove Sandelier to create this extension.</i><br>
+                            X: Got it, but what motivated you to create MangaPresence in the first place?<br>
+                            <i>Sandelier leans back, deep in thought.</i><br>
+                            Sandelier: I made MangaPresence because I wanted to know what manga and anime others were into. There was nothing out there that could show the exact pages someone's reading or watching.<br>
+                            <i>X nods</i><br>
+                            X: Interesting. What did you learn during the development of this project? <br>
+                            Sandelier: Well, it was my first-ever browser extension, and I dabbled with using the Windows tray for the program. I learned a lot along the way.<br>
+                            <i>X raises an eyebrow, curious about the challenges Sandelier faced.</i><br>
+                            X: I can imagine there were some challenges. Can you give me an example?<br>
+                            <i>Sandelier scratches his head, reminiscing about the hurdles he overcame.</i><br>
+                            Sandelier: Oh, certainly! One of the biggest challenges was extracting accurate data from various websites without knowing their structures. But I figured it out.<br>
+                            <i>X leans back again, wanting to know the main goal of the project.</i><br>
+                            X: Okay, so what was your main focus in creating MangaPresence?<br>
+                            <i>Sandelier leans forward, passionate about his vision.</i><br>
+                            Sandelier: My main focus was simplicity. I wanted it to be ready to use right out of the box, except for setting up the Discord bot client ID. Once that's done, it should work seamlessly without any further user interaction.<br>
+                            <i>X leans back once more, satisfied with the explanation.</i><br>
+                            X: Well, Sandelier, thanks for sharing the story behind MangaPresence.<br>
+                            <i>Sandelier grins and nods.</i><br>
+                            Sandelier: You're welcome, X! It's been a fantastic journey, and I'm thrilled to see more people using it.
+                        </p>                    
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="right-page">
-            <div class="page-content">
-                <div class="center-text">
-                    <div class="page-text-header">Vol 1: Ch 41</div>
+            <div id="right-page">
+                <div class="page-content">
+                    <div class="center-text">
+                        <div class="page-text-header">Vol 1: Ch 41</div>
+                    </div>
+                    <div class="page-text">
+                        <p>
+    
+                        </p>
+                    </div>
                 </div>
-                <div class="page-text">
-                    <p>
-
-                    </p>
-                </div>
+                <img src="fake-pages.webp" class="right-image">
             </div>
-            <img src="fake-pages.webp" class="right-image">
         </div>
     </div>
-    <script src="script.js"></script>
-    <script>
-        const book = document.getElementById('book');
-        const bookCover = document.getElementById('book-cover');
-            
-        bookCover.addEventListener('click', () => {
-            bookCover.style.display = 'none';
-            book.style.display = 'block';
-        
-        
-            setTimeout(() => {
-                adjustFontSizeToFitPages();
-            }, 1);
-        });
-    </script>
+    <script src="startUp.js"></script>
+    <script src="fontAdjust.js" defer></script>
 </body>
 </html>
-
-

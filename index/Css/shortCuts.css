@@ -3,10 +3,11 @@
 /* Program shortcuts */
 #program-shortcut {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	gap: 20px;
 	position: absolute;
 	margin: 20px;
+	flex-wrap: wrap;
 }
 
 .program-shortcut-button {

@@ -26,6 +26,9 @@
 								<button class="program-tab-right-menu" onclick="maxiProgram('browser')" aria-label="Maximize browser">
 									<p>⧉</p>
 								</button>
+								<button class="program-tab-right-menu" id="browser-menu-refresh-button" onclick="refreshSite('browser')" aria-label="Refresh browser">
+									<p>⟳</p>
+								</button>
 								<button class="program-tab-right-menu-close" onclick="closeProgram('browser')" aria-label="Close browser">
 									<p>X</p>
 								</button>
@@ -37,7 +40,7 @@
 					</header>
 					<iframe width="100%" frameborder="0" id="browser-iframe-website" class="removableData" title="Browser Website" src="browser/default/default.html"></iframe>
 				</div>
-				<div class="iframe-handle"></div>
+				<div class="iframe-handle browser-handle"></div>
 				<div class="resize-handle"></div>
 			</div>
 			<!-- Terminal -->
