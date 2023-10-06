@@ -7,9 +7,6 @@ Plan:
     Browser projects
         - Mangapresence could have two pages so the landing page would have clean text of the book version and then another page would be the book version.
 
-    Mangapresence  
-        - Maybe at x window size the pages will combine because currently if you make it too small like phone size then the text is pretty much unreadable.
-
     Sources:
         - Removing the header and making some other way of switching between the contents since currently theres two headers on top of eachother which looks bad.
 

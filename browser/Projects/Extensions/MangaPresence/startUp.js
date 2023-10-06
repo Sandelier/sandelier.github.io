@@ -6,10 +6,10 @@ const videoMap = document.getElementById('video-click-map');
 bookVideo.addEventListener('ended', function () {
     startupContainer.style.filter = 'none';
     animationContainer.style.transform = 'translateY(-100%)';
-
+    adjustFontSizeToFitPages();
+    
     setTimeout(function () {
         startupContainer.remove();
-        adjustFontSizeToFitPages();
     }, 500);
 });
 

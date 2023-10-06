@@ -60,7 +60,8 @@ header {
     max-height: 400px;
 }
 
-.sideContainer img {
+.sideContainer img,
+.sideContainer video {
     max-width: 100%;
     height: auto;
     max-height: 20vh;

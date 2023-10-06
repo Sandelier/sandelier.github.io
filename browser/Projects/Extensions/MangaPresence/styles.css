@@ -135,3 +135,63 @@ p,
     padding: 2px;
     max-width: 100%;
 }
+
+/* Had to add since before at too small size it was completely unreadable. */
+@media screen and (max-width: 1000px) {
+    #right-page {
+        display: none;
+    }
+
+    #book {
+        perspective: none;
+    }
+
+    #left-page {
+        border-right: solid 10px black;
+        width: 100%;
+        box-sizing: border-box;
+        transform: rotateY(0deg);
+    }
+
+    #left-page .page-text p {
+        font-size: calc(2vh + 1vw) !important;
+    }
+
+    #left-page .page-content {
+        overflow: scroll;
+    }
+
+    #left-page .right-image {
+        display: block;
+        width: 5%;
+    }
+}
+@media screen and (max-height: 600px) {
+    #right-page {
+        display: none;
+    }
+
+    #book {
+        perspective: none;
+    }
+
+    #left-page {
+        border-right: solid 10px black;
+        width: 100%;
+        box-sizing: border-box;
+        transform: rotateY(0deg);
+    }
+
+    #left-page .page-text p {
+        font-size: calc(2vh + 1vw) !important;
+    }
+
+    #left-page .page-content {
+        overflow: scroll;
+    }
+
+    #left-page .right-image {
+        display: block;
+        width: 5%;
+    }
+}

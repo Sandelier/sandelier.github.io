@@ -1,0 +1,36 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-size: 150px 150px;
+    filter: grayscale(100%);
+    background-image: linear-gradient(45deg, #0b0b0b 10%, #1c1c1c 10%, #1c1c1c 20%, #454545 20%, #454545 30%, #787878 30%, #787878 40%, #969696 40%, #969696 50%, #0b0b0b 50%, #0b0b0b 60%, #1c1c1c 60%, #1c1c1c 70%, #454545 70%, #454545 80%, #787878 80%, #787878 90%, #969696 90%, #969696 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-container {
+    display: flex;
+    width: 60vw;
+    height: 30vh;
+    background-color: white;
+    margin: 10px;
+    padding: 0;
+    text-align: center;
+}
+
+.text-box {
+    flex: 1;
+    padding: 20px;
+}
+
+.puzzle-container {
+    flex: 2;
+    background-color: lightblue;
+    padding: 20px;
+}

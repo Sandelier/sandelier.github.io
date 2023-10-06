@@ -1,21 +1,27 @@
 body {
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url('ConstructionTape.webp');
-    background-size: cover;
-    background-repeat: no-repeat;
+    width: 100vw;
     background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    background-image: url('ConstructionTape.webp');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
 p {
-    font-size: 24px;
+    font-size: calc(2vh + 1vw);
     margin-bottom: 20px;
     background-color: white;
     border: solid 2px black;

@@ -45,10 +45,10 @@ function splitContent() {
     paragraphs[1].innerHTML = rightLines.join('<br>');
 }
 
-let firstTime = true;
+let splitDone = false;
 function adjustFontSizeToFitPages() {
-    if (firstTime) {
-        firstTime = false;
+    if (!splitDone) {
+        splitDone = true;
         splitContent();
     }
 
@@ -64,11 +64,33 @@ function adjustFontSizeToFitPages() {
 
 let resizeTimer;
 window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-        adjustFontSizeToFitPages();
-    }, 100);
+    if (this.window.innerWidth >= 1000 || this.window.innerHeight >= 600) {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+            adjustFontSizeToFitPages();
+        }, 100);
+        addToLeftCheck = false;
+    } else {
+        if (!addToLeftCheck) {
+            addRightToLeft();
+        }
+    }
 });
+
+let addToLeftCheck = false;
+// Putting all right content to left content if the window size is too small.
+function addRightToLeft() {
+    const leftLines = paragraphs[0].innerHTML;
+    const rightLines = paragraphs[1].innerHTML;
+
+    const combinedLines = leftLines + '<br>' + rightLines;
+
+    paragraphs[0].innerHTML = combinedLines;
+    paragraphs[1].innerHTML = ''; 
+    splitDone = false; // So we can split it again in adjustfontsizetofitpage.
+    addToLeftCheck = true;
+}
+
 
 
 adjustFontSizeToFitPages(); // So we can load it right at the start when script has loaded. 
