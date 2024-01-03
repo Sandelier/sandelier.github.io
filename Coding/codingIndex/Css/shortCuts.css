@@ -1,0 +1,111 @@
+
+
+/* Program shortcuts */
+#program-shortcut {
+	display: flex;
+	justify-content: flex-start;
+	gap: 20px;
+	position: absolute;
+	margin: 20px;
+	flex-wrap: wrap;
+}
+
+.program-shortcut-button {
+	text-align: center;
+	min-width: 50px;
+	min-height: 50px;
+	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+}
+
+.program-shortcut-button:hover {
+    transition: scale 0.1s;
+    scale: 1.1;
+}
+
+.program-shortcut-button p {
+	margin: 0;
+	padding: 0;
+	margin-top: 5px; 
+	color: white;
+	user-select: none;
+}
+
+.program-shortcut-buttons {
+	background: none;
+	border: none;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	cursor: pointer;
+	min-width: 50px;
+	min-height: 50px;
+}
+
+
+#program-shortcut-terminal,
+#program-shortcut-browser,
+#program-shortcut-notepad,
+#program-shortcut-github,
+#program-shortcut-sources,
+#program-shortcut-home {
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+#program-shortcut-terminal {
+	background-image: url('../images/terminalIcon.webp');
+}
+
+#program-shortcut-browser {
+	background-image: url('../images/browser.webp');
+}
+
+#program-shortcut-notepad {
+	background-image: url('../../notepad/notepadIcon.webp');
+}
+
+#program-shortcut-github {
+	background-image: url('../../codingIndex/images/github.webp');
+	filter: invert(100%); /* The image is black so we have to switch it to white. */
+}
+
+#program-shortcut-sources {
+	background-image: url('../../codingIndex/images/Sources.webp');
+}
+
+#program-shortcut-home {
+	background-image: url('../../codingIndex/images/home.webp');
+}
+
+.highlighted {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.pulse-effect {
+	position: absolute;
+	border-radius: 50%;
+	border: solid 2px rgba(255, 255, 255, 0.3);
+	animation: pulse-animation 0.5s ease-in-out;
+	z-index: 1;
+	width: 20px;
+	height: 20px;
+	user-select: none;
+}
+
+@keyframes pulse-animation {
+	0% {
+		transform: scale(0);
+		opacity: 1;
+	}
+	100% {	
+		transform: scale(4);
+		opacity: 0;
+	}
+
+}

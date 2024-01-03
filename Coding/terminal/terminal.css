@@ -1,0 +1,33 @@
+
+
+/* Terminal console */
+#terminal-window {
+    background-color: #0c0c0c;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+    padding: 5px;
+    height: calc(100% - 40px);
+}
+
+#terminal-input-container {
+    display: flex;
+}
+
+
+#terminal-input {
+    all: unset;
+}
+
+
+#terminal-window p,
+#terminal-input {
+    font-size: 18px;
+    font-family: 'Cascadia Code', monospace;
+    color: #cccccc;
+    margin: 0; 
+    padding: 0;
+}
+
+#terminal-input {
+    flex-grow: 1;
+}

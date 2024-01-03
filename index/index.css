@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    background-color: #e4e4e4;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#primaryContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+
+    position: absolute;
+    z-index: 1;
+}
+
+#top-text {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Containers */
+
+#wrapper {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+
+#wrapper-top {
+    display: flex;
+    width: 100%;
+}
+
+#wrapper > a,
+#wrapper-top > a {
+    all: unset;
+
+    width: 100%;
+    cursor: pointer;
+}
+
+.container {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 0 10px;
+    text-align: center;
+    background-color: #ff7e7e;
+
+    transition: transform 0.2s ease-in-out;
+
+
+    /* https://www.cssmatic.com/box-shadow */
+    -webkit-box-shadow: 10px 10px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 17px 0px rgba(0,0,0,0.75);
+
+}
+
+#aboutme-container {
+    background-color: #83b5e7;
+    width: 50%;
+    margin: 10px auto 0px;
+}
+
+.container:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 800px) {
+    #wrapper-top {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container {
+        margin: 10px 0;
+        width: 100%;
+    }
+    #aboutme-container {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    #overlay-aboutme {
+        width: 80vw !important;
+    }
+
+    #overlay-aboutme-container  {
+        flex-direction: column;
+    }
+
+    #aboutme-code,
+    #aboutme-3d {
+        width: 100% !important;
+    }
+
+    #overlay-aboutme > * {
+        font-size: calc(5px + 1vh + 1vw) !important;
+    }
+}
+
+/* Overlay */
+
+#overlay {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 2;
+    display: none;
+    opacity: 0;
+  
+    transition: opacity 0.2s ease-in-out, display 0s ease-in-out 0.2s;
+}
+
+#overlay-background {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+}
+
+#overlay-aboutme {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 60vw;
+
+    background-color: antiquewhite;
+    border-radius: 25px;
+    padding: 5px;
+
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+#overlay-aboutme-container {
+    display: flex;
+}
+
+#aboutme-code,
+#aboutme-3d {
+    width: 50%;
+}
+
+#overlay-aboutme > * {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: calc(1vh + 1vw);
+}
+
+#aboutme-s > p,
+#aboutme-code > p,
+#aboutme-3d > p {
+    margin: 0;
+}

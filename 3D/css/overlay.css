@@ -1,0 +1,130 @@
+
+#overlay-container {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 2;
+    display: none;
+    opacity: 0;
+  
+    transition: opacity 0.2s ease-in-out, display 0s ease-in-out 0.2s;
+}
+
+model-viewer {
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
+#overlay-background {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+}
+
+#overlay-content {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 98vw;
+  height: 98vh;
+  border: solid 2px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#overlay-content img,
+#overlay-content video {
+  max-width: 100%;
+  max-height: 100%;
+  border: solid 1px white;
+}
+
+#overlay-content video {
+  border-bottom: solid 2px white;
+}
+
+
+#overlay-content-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+#overlay-content-buttons > button,
+#overlay-solidModel,
+#overlay-materialModel {
+  font-size: calc(40px + 1vw);
+  border: none;
+  padding: 0;
+  background: none;
+  background-image: none;
+  cursor: pointer;
+  color: white;
+
+  transition: transform 0.2s ease;
+}
+
+#overlay-content-buttons > button:hover,
+#overlay-solidModel:hover,
+#overlay-materialModel:hover {
+  transform: scale(1.2);
+}
+
+#overlay-viewerBtns {
+  display: flex;
+  flex-direction: column;
+}
+
+/* overlay tooltip */
+
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 1;
+  cursor: default;
+}
+
+.tooltip.active {
+  display: block;
+}
+
+#infoTooltip {
+  top: 50%;
+  right: calc(100% + 10px);
+  width: calc(35vw + 10vh);  
+  max-height: 60vh;
+  border-radius: 20px;
+  overflow-y: auto; 
+  user-select: text;
+}
+
+#tooltip-content {
+  font-size: calc(14px + 1vw);
+}
+
+#tooltip-date,
+#tooltip-name {
+  font-size: calc(10px + 1vw);
+  filter: grayscale();
+}
+
+#tooltip-info-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2px;
+}
+

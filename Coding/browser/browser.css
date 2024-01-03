@@ -1,0 +1,41 @@
+
+#browser-iframe-website{
+  overflow-y:scroll;
+  height: calc(100% - 40px); /* 40px is the size of the header */
+}
+
+
+
+/* Github image */
+#browser-github-page {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 5%;
+  height: auto;
+  min-width: 50px;
+  background-color: white;
+  border-radius: 100%;
+  border: 1px solid white;
+  box-shadow: -13px 13px 21px -5px rgba(0,0,0,0.7);
+}
+
+#browser-github-page:hover {
+  animation: rotateAnimation 1s ease-in infinite;
+  scale: 1.1;
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

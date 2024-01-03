@@ -1,0 +1,5 @@
+Musta valkoinen sivusto
+Sitten on containerja ja niissä oisko vaikka vasemmala teksti ja sitten oikeella se containeri ja vice versa
+Containerit vois olla jotain todella värikkäitä etä erotta joku keltanen ja siinä vois olla vaikka maali läiskä?
+Containerit on lukossa että pitää thä aina oisko 2x2 puzzle että menee läpi.
+Oisko että kun lukon aukasee niin joo se näyttää sen tekstin ja sitten tuo väriä sen containerin ympärille?

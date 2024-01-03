@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sandelier's Portfolio</title>
+		<meta name="description" content="Website to showcase Sandelier's portfolio">
+
+        <!-- model-viewer library (3D object viewer)-->
+        <!--Copyright 2017 Google LLC-->
+        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+        <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+        <!---->
+
+		<link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/slideshow.css">
+        <link rel="stylesheet" href="css/overlay.css">
+
+
+	</head>
+	<body>
+        <div id="overlay-container">
+            <div id="overlay-background"></div>
+            <div id="overlay-content">
+                <img loading="lazy">
+
+                <video controls>
+                    <source>
+                    Your browser does not support the video tag.
+                </video>
+                  
+                <model-viewer poster="images/loading.webp" id="viewer" auto-rotate camera-controls ar loading="lazy">
+                </model-viewer>
+
+                <div id="overlay-content-buttons">
+                    <button id="overlay-closeBtn">❌</button>
+                    <button id="overlay-infoBtn" class="tooltip-container">🛈
+                        <div class="tooltip" id="infoTooltip">
+                            <div id="tooltip-info-container">
+                                <div id="tooltip-name"></div>
+                                <div id="tooltip-date"></div>
+                            </div>
+                            <div id="tooltip-content"></div>
+                        </div>
+                    </button>
+
+                    <div id="overlay-viewerBtns">
+                        <button id="overlay-solidModel">S</button>
+                        <button id="overlay-materialModel">M</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <header>
+                <nav>
+                    <ul>
+                        <li><a href="../index/index.html">Home</a></li>
+                        <li><a href="#">Blender</a></li>
+                        <li><a href="#">Fusion 360</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div id="blender-page">
+
+            </div>
+            <div id="fusion-page">
+
+            </div>
+        </div>
+	</body>
+    <script src="js/dynamicContentLoader.js"></script>
+	<script src="js/slideShow.js"></script>
+    <script src="js/overlay.js"></script>
+</html>
