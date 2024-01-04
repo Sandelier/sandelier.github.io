@@ -10,7 +10,8 @@ let pythonServer;
 const browserArg = process.argv[2];
 const directoryArg = process.argv[3];
 
-const url = "http://localhost:8000/";
+const port = 8000;
+const url = `http://localhost:${port}/`;
 
 function openBrowser() {
     switch (browserArg) {
@@ -29,31 +30,43 @@ function openBrowser() {
             exec(`start firefox --private-window ${url}`);
             break;
     }
-
-    console.log("------------------------------");
-    console.log("----- To leave press ESC -----");
-    console.log("----- Arg 3 = Directory ------");
-    console.log("------ Arg 2 = Browser -------");
-    console.log("------------------------------");
 }
 
-
 function startPythonServer() {
-    const serverPath = path.resolve(process.cwd(), directoryArg || '');
+    try {
+        const serverPath = path.resolve(process.cwd(), directoryArg || '');
 
-    pythonServer = spawn('python', ['-m', 'http.server'], { cwd: serverPath });
+        pythonServer = spawn('python', ['-m', 'http.server', port], { cwd: serverPath });
+    
+        pythonServer.stdout.on('data', (data) => {
+            console.log(`Pythons: ${data}`);
+        });
+    
+        pythonServer.stderr.on('data', (data) => {
 
-    pythonServer.stdout.on('data', (data) => {
-        console.log(`Python: ${data}`);
-    });
+            // The code is at the end of the string so we are reversing the string.
+            // I feel like there is something else that just does this immediately but i just cant remember it :p
+            const stderrStr = data.toString(); 
+            const reversedStr = stderrStr.split('').reverse().join('');
+            const statusCodeMatch = reversedStr.match(/\b(\d{3})\b/g); 
 
-    pythonServer.stderr.on('data', (data) => {
-        console.error(`Python error: ${data}`);
-    });
 
-    pythonServer.on('close', (code) => {
-        console.log(`Python server process exited with code ${code}`);
-    });
+            if (statusCodeMatch) {
+                const statusCode = parseInt(statusCodeMatch[0].split('').reverse().join(''), 10);
+                if (statusCode !== 200 && statusCode !== 304) {
+                    console.error(`Python: ${stderrStr}`);
+                }
+            } else {
+                console.error(`Python: ${stderrStr}`);
+            }
+        });
+    
+        pythonServer.on('close', (code) => {
+            console.log(`Python server process exited with code ${code}`);
+        });
+    } catch (error) {
+        console.error(`Unable to start Python server. ${error}`);
+    }
 }
 
 // https://github.com/TooTallNate/keypress/issues/28#issue-643283219
@@ -63,13 +76,29 @@ function waitForKeypress() {
 
     process.stdin.on('keypress', (str, key) => {
         if (key.name === 'escape') {
-            pythonServer.kill();
-            process.exit();
+            killProgram();
         } else {
             openBrowser();
         }
     });
 }
+
+function killProgram() {
+    if (pythonServer) {
+        pythonServer.kill();
+    }
+    process.exit();
+}
+
+function startUpMessages() {
+    console.log("------------------------------");
+    console.log("----- To leave press ESC -----");
+    console.log("----- Arg 3 = Directory ------");
+    console.log("------ Arg 2 = Browser -------");
+    console.log("------------------------------");
+}
+
+startUpMessages();
 
 startPythonServer();
 openBrowser();

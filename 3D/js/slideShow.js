@@ -10,8 +10,9 @@ function findContainerByAttribute(attr) {
 function handleClick(clickedElement) {
 
     // Added mediaquery check also since without it the user would have needed to press two times to open image in phone.
-    const mediaQuery = window.matchMedia('(max-width: 1100px)');
-    if (clickedElement.classList.contains('center') || mediaQuery.matches) {
+    const widthMediaQuery = window.matchMedia('(max-width: 1100px)');
+    const heightMediaQuery = window.matchMedia('(max-height: 650px)');
+    if (clickedElement.classList.contains('center') || widthMediaQuery.matches || heightMediaQuery.matches) {
         showOverlay(clickedElement);
 
         if (clickedElement.classList.contains('center')) {
