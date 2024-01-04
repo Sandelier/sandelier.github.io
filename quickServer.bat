@@ -1,2 +1,2 @@
 @echo off
-node quickServer/quickServer.js firefox
+node quickServer.js firefox

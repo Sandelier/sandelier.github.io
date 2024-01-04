@@ -1,0 +1,11 @@
+
+
+3D
+    - Have to make an better loading model poster.
+    - Have to figure out an better background.
+
+Coding
+    - Have to fix the responsitivity problem on phones that happens when moving windows.
+
+Index
+    - Have to figure out an better layout + background.
