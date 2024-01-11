@@ -95,11 +95,6 @@ body {
         flex-direction: column;
     }
 
-    #aboutme-code,
-    #aboutme-3d {
-        width: 100% !important;
-    }
-
     #overlay-aboutme > * {
         font-size: calc(5px + 1vh + 1vw) !important;
     }
@@ -139,13 +134,25 @@ body {
     overflow-y: auto;
 }
 
-#overlay-aboutme-container {
-    display: flex;
+@media screen and (max-width: 1100px) {
+    #overlay-aboutme {
+        width: 90vw;
+    }
 }
 
-#aboutme-code,
-#aboutme-3d {
-    width: 50%;
+#overlay-aboutme-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#overlay-aboutme-container > ul {
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 #overlay-aboutme > * {
@@ -154,8 +161,42 @@ body {
     font-size: calc(1vh + 1vw);
 }
 
-#aboutme-s > p,
-#aboutme-code > p,
-#aboutme-3d > p {
+/* Skills */
+
+#overlay-aboutme-container > ul > button {
+    background: none;
+    border: none;
+    padding: 0;
     margin: 0;
+
+    cursor: pointer;
+    font-size: calc(1vh + 1vw);
+    padding: calc(1vh + 5px);
+    background-color: #0c8ce9;
+    color: white;
+    border-radius: 10px;
+
+    -webkit-box-shadow: 7px 7px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 7px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 7px 7px 15px 0px rgba(0,0,0,0.75);
+
+    transition: transform 0.2s ease-in-out;
+}
+
+#overlay-aboutme-container > ul > button:hover {
+    transform: scale(1.1);
+}
+
+/* Skills infos */
+
+#overlay-aboutme-container-skills-info {
+    width: 90%;
+}
+
+#overlay-aboutme-container-skills-info > div {
+    display: none;
+    gap: 5px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 15px;
 }

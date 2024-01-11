@@ -1,6 +1,6 @@
 
 
-
+/* Overlay */
 const aboutmeBtn = document.getElementById('aboutme-button');
 
 const overlay = document.getElementById('overlay');
