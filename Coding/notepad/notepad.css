@@ -3,7 +3,7 @@
 
 #notepad-textContainer {
     padding: 0px 5px 0px 5px;
-    font-size: 20px;
+    font-size: calc(20px + 0.2vw);
     overflow: auto;
     height: 100%;
     background-color: #272727;    

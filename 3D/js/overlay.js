@@ -23,7 +23,7 @@ function showOverlay(centerElement) {
 
 function setOverlayContent(centerElement) {
     const centerImgUrl = centerElement.querySelector('img').getAttribute('src');
-    const renderUrl = centerImgUrl.replace("Compressed", "Render");
+    const renderUrl = centerImgUrl.replace("LowRes", "");
 
     const formatAttr = centerElement.getAttribute('format');
     if (formatAttr) {

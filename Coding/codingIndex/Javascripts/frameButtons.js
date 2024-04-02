@@ -25,51 +25,79 @@ const browserGithubLink = document.getElementById("browser-github-link");
 
 // This puts the display to none but also resets it.
 function closeProgram(dataText) {
-	const program = getProgram(dataText);
-	if (program) {
-		program.classList.add("exit-animation");
-    	program.addEventListener("transitionend", function() {
-    	    program.style.display = "none";
-    	    program.classList.remove("exit-animation");
+    const program = getProgram(dataText);
 
-			const removableDatas = program.querySelectorAll('.removableData');
-			removableDatas.forEach(data => {
-        		while (data.firstChild) {
-        	    	data.removeChild(data.firstChild);
-        		}
-				if (data.tagName === 'IFRAME') {
-					data.src = 'browser/default/default.html'; // for iframe in browser.
-				}
-    		});
-			program.style.display = 'none';
-			program.style.width = '';
-			program.style.height = '';
-			program.style.transform = '';
-			positions[dataText] = '';
+    if (program) {
+        program.classList.add("exit-animation");
 
-        	if (dataText === 'terminal') {
-        	    terminalResetToDefaults();
-        	}
+        function transitionEndHandler() {
+            program.style.display = "none";
+            program.classList.remove("exit-animation");
 
-			// Resetting the github link in browser back to normal. From showPage.js
-			browserGithubLink.href = "https://github.com/Sandelier/sandelier.github.io"
-    	});
-	}
+            const removableDatas = program.querySelectorAll('.removableData');
+            removableDatas.forEach(data => {
+                while (data.firstChild) {
+                    data.removeChild(data.firstChild);
+                }
+                if (data.tagName === 'IFRAME') {
+                    data.src = 'browser/default/default.html'; // for iframe in browser.
+                }
+            });
+            program.style.display = 'none';
+            program.style.width = '';
+            program.style.height = '';
+            program.style.transform = '';
+            positions[dataText] = '';
+
+            if (dataText === 'terminal') {
+                terminalResetToDefaults();
+            }
+
+            // Resetting the github link in browser back to normal. From showPage.js
+            browserGithubLink.href = "https://github.com/Sandelier/sandelier.github.io";
+
+            program.removeEventListener("transitionend", transitionEndHandler);
+        }
+
+        program.addEventListener("transitionend", transitionEndHandler);
+    }
 }
+
 
 // This puts the program to maximium size
-function maxiProgram(dataText) {
-	const program = getProgram(dataText);
-	if (program) {
-		const frameContainer = document.getElementById('iframeContainer');
-		const newWidth = frameContainer.clientWidth;
-		const newHeight = frameContainer.clientHeight;
-		program.style.width = newWidth + 'px';
-		program.style.height = newHeight + 'px';
-		program.style.transform = '';
-		positions[dataText] = '';
-	}
+const maximizeList = []
+function maxiProgram(dataText, dontAddToList = false) {
+    const program = getProgram(dataText);
+
+    if (program) {
+        let newWidth;
+        let newHeight;
+        const frameContainer = document.getElementById('iframeContainer');
+
+        const index = maximizeList.findIndex(item => item.dataText === dataText);
+
+		// if maximizeList is defined.
+        if (dontAddToList === false && index !== -1) {
+            newWidth = maximizeList[index].width;
+            newHeight = maximizeList[index].height;
+
+            maximizeList.splice(index, 1);
+        } else {
+            newWidth = frameContainer.clientWidth;
+            newHeight = frameContainer.clientHeight;
+            if (dontAddToList === false) { 
+				maximizeList.push({ dataText, width: program.offsetWidth, height: program.offsetHeight }); 
+			}
+        }
+
+        program.style.width = newWidth + 'px';
+        program.style.height = newHeight + 'px';
+        program.style.transform = '';
+        positions[dataText] = '';
+		program.style.zIndex = maxZIndex++;
+    }
 }
+
 
 // This just puts the display to none
 function minProgram(dataText) {
@@ -86,20 +114,19 @@ function minProgram(dataText) {
 // Just resets the src of the iframe in browser.
 const browserIframe = document.getElementById('browser-iframe-website');
 const refreshButton = document.getElementById('browser-menu-refresh-button');
-const refreshText = refreshButton.querySelector('p');
 
 let canRefresh = true;
 function refreshSite() {
 	if (canRefresh) {
 	  browserIframe.src = browserIframe.src;
 	  canRefresh = false;
-	  refreshButton.style.cursor = 'default';
-	  refreshText.style.animation = 'rotateRefresh 10s linear infinite';
+	  refreshButton.style.cursor = 'not-allowed';
+	  refreshButton.style.animation = 'rotateRefresh 10s linear infinite';
   
 	  setTimeout(() => {
 		canRefresh = true;
 		refreshButton.style.cursor = 'pointer';
-		refreshText.style.animation = 'none';
+		refreshButton.style.animation = 'none';
 	  }, 10000);
 	}
   }

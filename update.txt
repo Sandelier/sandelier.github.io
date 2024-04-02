@@ -1,11 +1,64 @@
 
 
-3D
-    - Have to make an better loading model poster.
-    - Have to figure out an better background.
 
-Coding
-    - Have to fix the responsitivity problem on phones that happens when moving windows.
 
-Index
-    - Have to figure out an better layout + background.
+
+Done:
+    - Added MultiEmuGameGui and ServerStarter github projects.
+
+    - Made that maximize will return the old size if you press it again.
+
+    - Forgot to increase zindex when maximizing program.
+
+    - Added not-allowed cursor to refresh button when the timer is going.
+
+    - Added "Models" program that opens up the browser and shows my blender models.
+
+    - Added overlay on start up.
+
+    - Added new models.
+
+    - Commented header from 3d site.
+
+    - Added model-viewer to sources.
+
+    - Removed home button since the coding index will become the main page.
+
+    - Removed old index page.
+
+    - Added About me page and shortcut to it.
+
+    - Added tab completion functionality to terminal.
+
+    - Removed github page buttons from "Models" since it was on the way of the close button but if i were to move them to left it wouldnt look as good. And well the github button dosent really make sense to be on the "Models" 
+
+    - Increased the size of the images on left and right in slideshow in "Models" by 2vw.
+
+    - Tested adding particles with tsParticles into background and liked it enough that i will keep them.
+
+    - "Browser" was adding new event listeners constantly when closing the window and not removing them.
+
+    - Had to add pointer cursor on program buttons also since before it was only in the image and not in the text also.
+
+    - Updated model viewer.
+
+    - Made all "Models" images into webp and compressed them. Also changed the basement video bitrate from 8000k into 3000k.
+
+    - Changed "Close", "Maximize" and "Refresh" buttons in "Browser" to be svg images instead of unicode characters.
+
+    - Added "settings" command in terminal if you want to hide browser when resizing/dragging since they were causing some lag issues also added that you can remove particles from background.
+
+    - Added loading screen while iframe is hidden.
+
+    - Fixed the issue when selectin an previous command the cursor would go to the start of the string.
+    
+TODO: 
+    - (Low) Making tab completion work with slashes so we could in example auto complete "Extensions/M" into "Extensions/MangaPresence"
+    - (Low) Changelog program that tells what a new update brought.
+
+    - (High) Making proper websites for all projects since currently only MangaPresence has an actual page.
+        - Ext-Run could look like an jigsaw. Maybe like there are 30 jigsaws and each jigsaw has text on them. It could be just instantly be done since making it an puzzle would be pretty annoying user experience.
+
+    - (Mid) Figure out why the page is slow. It happens with "Browser" which most likely means its something to do with iframes layout updates.
+
+    - (Low) Fix refresh button spinning the whole button instead of just the image.

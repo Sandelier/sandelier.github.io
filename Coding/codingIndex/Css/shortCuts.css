@@ -17,6 +17,7 @@
 	display: flex;
   	flex-direction: column;
   	align-items: center;
+	cursor: pointer;
 }
 
 .program-shortcut-button:hover {
@@ -44,6 +45,7 @@
 	cursor: pointer;
 	min-width: 50px;
 	min-height: 50px;
+	
 }
 
 
@@ -52,10 +54,14 @@
 #program-shortcut-notepad,
 #program-shortcut-github,
 #program-shortcut-sources,
-#program-shortcut-home {
+#program-shortcut-Models,
+#program-shortcut-AboutMe,
+#program-shortcut-settings {
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
+
+	user-select: none;
 }
 
 #program-shortcut-terminal {
@@ -79,8 +85,16 @@
 	background-image: url('../../codingIndex/images/Sources.webp');
 }
 
-#program-shortcut-home {
-	background-image: url('../../codingIndex/images/home.webp');
+#program-shortcut-Models {
+	background-image: url('../../codingIndex/images/blenderLogo.webp');
+}
+
+#program-shortcut-settings {
+	background-image: url('../../settings/settings.webp');
+}
+
+#program-shortcut-AboutMe {
+	background-image: url('../../codingIndex/images/infoIcon.svg');
 }
 
 .highlighted {

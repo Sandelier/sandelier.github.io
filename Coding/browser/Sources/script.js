@@ -11,6 +11,10 @@ const ColorMap = {
     2: { 
         headerColor: '#FFD37E', 
         contentColor: '#2C3532' 
+    },
+    3: { 
+        headerColor: '#fF6961', 
+        contentColor: '#2C3532' 
     }
 };
 

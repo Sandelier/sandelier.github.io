@@ -15,7 +15,9 @@ const allProjects = {
         "github.io": {}
     },
     "Programs": {
-        "LangWatch2": {}
+        "LangWatch2": {},
+        "MultiEmuGameGui": {},
+        "ServerStarter": {}
     },
 };
 
@@ -45,6 +47,40 @@ terminalInput.addEventListener("input", function() {
         }
     }
 });
+
+
+// Tab completion functionality. Only works from current path to next path since making it support slashes and etc would take too much time. Gonna add it to TODO list.
+terminalInput.addEventListener("focus", function(event) {
+    // Add event listener for keydown event
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Tab") {
+            event.preventDefault();
+            
+            var inputValue = terminalInput.value.trim();
+            
+            // Basically checks if input field is "*Anything*>cd *Text/Slashes*"
+            var match = inputValue.match(/.*>cd\s([a-zA-Z/]+)$/);
+            if (match) {
+                var lastWord = match[1];
+                
+                var matches = directoryManager.getCurrentSubDirs(lastWord);
+                
+                if (matches !== null) {
+                    var lastIndex = inputValue.lastIndexOf(lastWord);
+                    if (lastIndex !== -1) {
+                        var replacedInputValue = inputValue.slice(0, lastIndex) + matches + inputValue.slice(lastIndex + lastWord.length);
+                        terminalInput.value = replacedInputValue;
+                    }
+                }
+            }
+        }
+    });
+});
+
+
+
+
+
 
 // Used to easily change directorys.
 class DirectoryManager {
@@ -107,6 +143,23 @@ class DirectoryManager {
         }
     }
 
+    // Used for tab functionality. Just gets the first matching directory from lastChars.
+    getCurrentSubDirs(lastChars) {
+        const subdirectories = Object.keys(this.currentDirectory);
+        let firstMatch = null;
+    
+        const lowerLastChars = lastChars.toLowerCase();
+    
+        for (const directory of subdirectories) {
+            if (directory.toLowerCase().startsWith(lowerLastChars)) { 
+                firstMatch = directory;
+                break;
+            }
+        }
+    
+        return firstMatch;
+    }
+
     // Used for read with argments
     checkArgumentFilePath(argument, ) {
 
@@ -152,6 +205,7 @@ terminalInput.addEventListener('keydown', function (event) {
 
         // Handling when selecting previous commands.
         case 'ArrowUp':
+            event.preventDefault(); // So that the cursor dosent go to the start of the string.
             if (currentCommandIndex > 0) {
                 currentCommandIndex--;
                 terminalInput.value = previousCommands[currentCommandIndex];
@@ -214,7 +268,8 @@ function launchCommand(commandMessage) {
         'list': ['li', 'dir'],
         'help': [],
         'cl': ['clear', 'cls'],
-        'cd': []
+        'cd': [],
+        'settings': []
     };
 
     const messageSplitted = commandMessage.match(/^(.*?)\s*>\s*(\w+)\s*(.*)$/);
@@ -247,6 +302,18 @@ function launchCommand(commandMessage) {
                     sendToTerminal('', error.message);
                 }
                 break;
+            case 'settings':
+                if (messageSplitted[3]) {
+                    try {
+                        handleSettings(messageSplitted[3]);
+                    } catch (error) {
+                        console.warn(error);
+                        sendToTerminal("", error.message);
+                    }
+                } else {
+                    sendSettingsHelp();
+                }
+                break;
         }
     };
 
@@ -259,6 +326,77 @@ function launchCommand(commandMessage) {
 
     unknownCommand(command);
 }
+
+function sendSettingsHelp() {
+    sendToTerminal('', 'Usage');
+    sendToTerminal('', '- "settings --list" shows current setting values.');
+    sendToTerminal('', '- "settings --drag false --particles false"');
+    sendToTerminal('', '- All settings only accept true or false');
+    sendEmptyToTerminal();
+    sendToTerminal('', 'Available settings');
+    sendToTerminal('', '- drag : Hides browser on dragging');
+    sendToTerminal('', '- resize : Hides browser on resize');
+    sendToTerminal('', '- particles : Disables background particles. Requires an refresh.');
+    sendEmptyToTerminal();
+}
+
+function handleSettings(command) {
+
+
+    if (command === "--list") {
+        sendToTerminal('', 'Current settings:');
+
+
+        for (const setting in currentSessionSettings) {
+            sendToTerminal('', `- ${setting}: ${currentSessionSettings[setting]}`);
+        }
+        sendEmptyToTerminal();
+        return;
+    }
+
+    const parts = command.trim().split(/\s+/);
+
+    const settings = {};
+
+    // Goes through each word and checks if the first word starts with "--" and second one dosent. Since "--" means its an setting and the one without it means its an value.
+    for (let i = 0; i < parts.length; i++) {
+        const part = parts[i];
+
+        if (part.startsWith("--")) {
+            const setting = part.slice(2);
+
+            // From settingsCookies.js
+            if (currentSessionSettings[setting] !== undefined) {
+                if (i + 1 < parts.length && !parts[i + 1].startsWith("--")) {
+                    const value = parts[i + 1];
+
+                    if (value === "true" || value === "false") {
+                        settings[setting] = value === "true";
+                        i++;
+                    } else {
+                        throw new Error(`Invalid value "${value}" for setting "${setting}". Value should be "true" or "false".`);
+                    }
+                } else {
+                    throw new Error(`No value provided for setting "${setting}"`);
+                }
+            } else {
+                throw new Error(`Invalid setting "${setting}". Use "settings" to see available settings`);
+            }
+        }
+    }
+
+    for (const setting in settings) {
+        if (currentSessionSettings[setting] != undefined) {
+            currentSessionSettings[setting] = settings[setting];
+            sendToTerminal('', `Set ${setting} to ${settings[setting]}`);
+        }
+    }
+
+    setCurrentToCookie();
+}
+
+
+
 
 function handleRead(argument) {
     if (argument) {
@@ -283,6 +421,7 @@ function sendHelp() {
     sendToTerminal('', 'cl/clean/cls : Clears the window');
     sendToTerminal('', 'read/type/open [project_name] : Display project details');
     sendToTerminal('', 'list/li/dir : Lists subdirectorys');
+    sendToTerminal('', 'settings : Change settings of the page.');
     sendToTerminal('', 'help : Display this help message');
     sendEmptyToTerminal();
 }

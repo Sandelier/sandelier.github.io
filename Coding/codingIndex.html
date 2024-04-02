@@ -7,12 +7,23 @@
 		<meta name="description" content="Website to showcase Sandelier's portfolio">
 		<link rel="stylesheet" href="codingIndex/Css/codingIndex.css">
 		<link rel="stylesheet" href="codingIndex/Css/shortCuts.css">
+		<link rel="stylesheet" href="codingIndex/Css/overlay.css">
 		<link rel="stylesheet" href="browser/browser.css">
 		<link rel="stylesheet" href="notepad/notepad.css">
 		<link rel="stylesheet" href="terminal/terminal.css">
 		<link rel="stylesheet" href="allPrograms/programs.css">
 	</head>
+
 	<body>
+
+		<div id="overlay">
+			<div id="overlay-content">
+			  <div>Works best on computers.</div>
+			  <div>Using Full screen mode is recommended.</div>
+			  <div>Click anywhere to close.</div>
+			</div>
+		  </div>
+
 		<div id="iframeContainer">
 			<!-- Browser -->
 			<div class="draggable-container" data-container="browser">
@@ -23,14 +34,13 @@
 								<button class="program-tab-right-menu" onclick="minProgram('browser')" aria-label="Minimize browser">
 									<p>─</p>
 								</button>
-								<button class="program-tab-right-menu" onclick="maxiProgram('browser')" aria-label="Maximize browser">
-									<p>⧉</p>
+								<button class="program-tab-right-menu maximizeBtn" onclick="maxiProgram('browser')" aria-label="Maximize browser">
 								</button>
-								<button class="program-tab-right-menu" id="browser-menu-refresh-button" onclick="refreshSite('browser')" aria-label="Refresh browser">
-									<p>⟳</p>
+
+								<button class="program-tab-right-menu refreshBtn" id="browser-menu-refresh-button" onclick="refreshSite('browser')" aria-label="Refresh browser">
 								</button>
-								<button class="program-tab-right-menu-close" onclick="closeProgram('browser')" aria-label="Close browser">
-									<p>X</p>
+
+								<button class="program-tab-right-menu-close closeBtn" onclick="closeProgram('browser')" aria-label="Close browser">
 								</button>
 							</div>
 						</div>
@@ -52,11 +62,9 @@
 								<button class="program-tab-right-menu" onclick="minProgram('terminal')" aria-label="Minimize terminal">
 									<p>─</p>
 								</button>
-								<button class="program-tab-right-menu" onclick="maxiProgram('terminal')" aria-label="Maximize terminal">
-									<p>⧉</p>
+								<button class="program-tab-right-menu maximizeBtn" onclick="maxiProgram('terminal')" aria-label="Maximize terminal">
 								</button>
-								<button class="program-tab-right-menu-close" onclick="closeProgram('terminal')" aria-label="Close terminal">
-									<p>X</p>
+								<button class="program-tab-right-menu-close closeBtn" onclick="closeProgram('terminal')" aria-label="Close terminal">
 								</button>
 							</div>
 						</div>
@@ -79,13 +87,10 @@
 						<div class="program-top-header">
 							<div class="program-top-header-modifybuttons">
 								<button class="program-tab-right-menu" onclick="minProgram('notepad')" aria-label="Minimize Notepad">
-									<p>─</p>
 								</button>
-								<button class="program-tab-right-menu" onclick="maxiProgram('notepad')" aria-label="Maximize Notepad">
-									<p>⧉</p>
+								<button class="program-tab-right-menu maximizeBtn" onclick="maxiProgram('notepad')" aria-label="Maximize Notepad">
 								</button>
-								<button class="program-tab-right-menu-close" onclick="closeProgram('notepad')" aria-label="Close Notepad">
-									<p>X</p>
+								<button class="program-tab-right-menu-close closeBtn" onclick="closeProgram('notepad')" aria-label="Close Notepad">
 								</button>
 							</div>
 						</div>
@@ -104,6 +109,7 @@
 				<div class="iframe-handle"></div>
 				<div class="resize-handle"></div>
 			</div>
+
 			<nav id="program-shortcut">
 				<div class="program-shortcut-button" onclick="highLightSelection(this)" ondblclick="activateProgram('terminal', this)">
 				  <button class="program-shortcut-buttons" id="program-shortcut-terminal" aria-label="Terminal Shortcut"></button>
@@ -125,17 +131,63 @@
 					<button class="program-shortcut-buttons" id="program-shortcut-sources" aria-label="Sources Shortcut"></button>
 					<p>Sources</p>
 				</div>
-				<div class="program-shortcut-button" onclick="highLightSelection(this)" ondblclick="window.location.href = '../index/index.html'">
-					<button class="program-shortcut-buttons" id="program-shortcut-home" aria-label="Home Shortcut"></button>
-					<p>Home</p>
+				<div class="program-shortcut-button" onclick="highLightSelection(this)" ondblclick="changePage('../../3D/3d.html', false, true, true)">
+					<button class="program-shortcut-buttons" id="program-shortcut-Models" aria-label="Models Shortcut"></button>
+					<p>Models</p>
+				</div>
+				<div class="program-shortcut-button" onclick="highLightSelection(this)" ondblclick="changePage('../../Aboutme/Aboutme.html')">
+					<button class="program-shortcut-buttons" id="program-shortcut-AboutMe" aria-label="About me Shortcut"></button>
+					<p>About me</p>
 				</div>
 			</nav>
 		</div>
 	</body>
-	<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js" defer></script>
-	<script src="codingIndex/Javascripts/frameModifying.js" defer></script>
-	<script src="browser/showPage.js" defer></script>
-	<script src="terminal/terminal.js" defer></script>
-	<script src="codingIndex/Javascripts/frameButtons.js" defer></script>
-	<script src="codingIndex/Javascripts/styling.js" defer></script>
+
+	<script>
+		
+		
+		function fpsMeter() {
+		    let prevTime = Date.now(),
+		        frames = 0;
+
+		    requestAnimationFrame(function loop() {
+		        const time = Date.now();
+		        frames++;
+		        if (time > prevTime + 100) {
+		            //let fps = Math.round((frames * 1000) / (time - prevTime));
+					let fps = Math.floor(frames * 1000 / (time - prevTime) / 10) * 10;
+		            prevTime = time;
+		            frames = 0;
+				
+				
+		            if (fps < 100) {
+		                console.warn('Low FPS detected! FPS: ', fps);
+		            } else if (fps < 150 && fps > 100) {
+						console.info(`FPS: ${fps}`);
+					}
+		        }
+			
+		        requestAnimationFrame(loop);
+		    });
+		}
+
+		fpsMeter();
+		
+	</script>
+
+	<script src="settings/settingsCookies.js"></script>
+	<script src="codingIndex/Javascripts/loadScriptsDynamically.js"></script>
+
+	<script src=" https://cdn.jsdelivr.net/npm/interactjs@1.10.27/dist/interact.min.js "></script>
+	<script src="codingIndex/Javascripts/frameModifying.js"></script>
+	<script src="browser/showPage.js"></script>
+
+	<script src="terminal/terminal.js"></script>
+	<script src="codingIndex/Javascripts/frameButtons.js"></script>
+	<script src="codingIndex/Javascripts/styling.js"></script>
+
+	<!--
+	<script src="https://cdn.jsdelivr.net/npm/tsparticles@1.33.0"></script>
+	<script src="codingIndex/Javascripts/particles.js"></script>
+	-->
 </html>

@@ -12,6 +12,11 @@ interact('.iframe-handle').draggable({
     ],
     listeners: {
         start(event) {
+
+            if (currentSessionSettings.drag === true) {
+                document.getElementById('browser-iframe-website').style.visibility = "hidden";
+            }
+
             const handle = event.target;
             const parentElement = handle.parentElement;
             const dataContainer = parentElement.getAttribute("data-container");
@@ -35,6 +40,10 @@ interact('.iframe-handle').draggable({
         end(event) {
             event.target.style.width = "";
             event.target.style.height = "";
+
+            if (currentSessionSettings.drag === true) {
+                document.getElementById('browser-iframe-website').style.visibility = "visible";
+            }
         }
     },
 })
@@ -73,6 +82,11 @@ interact('.resize-handle')
         start(event) {
             event.target.parentElement.style.zIndex = maxZIndex++;
             event.target.style.zIndex = maxZIndex++;
+
+            if (currentSessionSettings.resize === true) {
+                document.getElementById('browser-iframe-website').style.visibility = "hidden";
+            }
+
         },
       move: function (event) {
         let { x, y } = event.target.dataset;
@@ -100,6 +114,10 @@ interact('.resize-handle')
     },
     end(event) {
         event.target.style.zIndex = "";
+
+        if (currentSessionSettings.resize === true) {
+            document.getElementById('browser-iframe-website').style.visibility = "visible";
+        }
     }
   }
 });

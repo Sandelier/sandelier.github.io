@@ -75,3 +75,24 @@ function calculateDistance(point1, point2) {
     const dy = point1.y - point2.y;
     return Math.sqrt(dx * dx + dy * dy) >= miniumDistance;
 }
+
+
+
+
+// Overlay closing
+
+document.addEventListener("DOMContentLoaded", function() {
+    var overlay = document.getElementById('overlay');
+  
+    setTimeout(function() {
+      overlay.style.cursor = "pointer";
+
+      overlay.addEventListener('click', function() {
+        overlay.style.transition = "opacity 0.3s";
+        overlay.style.opacity = "0";
+        setTimeout(function() {
+          overlay.style.display = 'none';
+        }, 300);
+      });
+    }, 1000);
+});
