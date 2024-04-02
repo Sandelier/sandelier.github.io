@@ -62,3 +62,11 @@ TODO:
     - (Mid) Figure out why the page is slow. It happens with "Browser" which most likely means its something to do with iframes layout updates.
 
     - (Low) Fix refresh button spinning the whole button instead of just the image.
+
+    - (High) Change info icons in aboutme window to be the same svg image since on phone the unicode is just an black box.
+
+    - (Mid) Change the iframe viewport size to be smaller for phones since part of it gets overflown in phones.
+
+    - (High) Make terminal easier to use on phone.
+
+    - (Mid) Sources window is quite ugly on phones.
