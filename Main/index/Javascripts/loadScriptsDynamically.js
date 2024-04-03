@@ -26,7 +26,7 @@ function loadScripts(scripts, callback) {
 if (currentSessionSettings.particles === false) {
     loadScripts([
         'https://cdn.jsdelivr.net/npm/tsparticles@1.33.0',
-        'codingIndex/Javascripts/particles.js'
+        'Main/index/Javascripts/particles.js'
     ], function() {
         console.log("Loaded scripts");
         document.querySelector('.tsparticles-canvas-el').style.pointerEvents = "none";

@@ -175,13 +175,13 @@
 }
 
 .refreshBtn {
-    background-image: url('../codingIndex/images/For later use/Refresh.svg');
+    background-image: url('../index/images/For later use/Refresh.svg');
 }
 
 .maximizeBtn {
-    background-image: url('../codingIndex/images/For later use/maxi.svg');
+    background-image: url('../index/images/For later use/maxi.svg');
 }
 
 .closeBtn {
-    background-image: url('../codingIndex/images/For later use/close.svg');
+    background-image: url('../index/images/For later use/close.svg');
 }

@@ -5,20 +5,22 @@ const githubLinkHref = document.getElementById("browser-github-link");
 
 function changePage(filePath, fromTerminal = false, maximize = false, hideGithub = false) {
 
+    console.log(filePath);
+
     githubLinkHref.style.display = "block";
     websiteIframe.style.display = "none";
 
-    websiteIframe.parentElement.style.backgroundImage = "url('browser/loading.svg')";
+    websiteIframe.parentElement.style.backgroundImage = "url('Main/browser/loading.svg')";
 
     if (fromTerminal) {
         const projectsIndex = filePath.indexOf('Projects');
-        websiteIframe.src = ("browser/" + filePath.slice(projectsIndex));
+        websiteIframe.src = ("Main/browser/" + filePath.slice(projectsIndex));
 
         const fileName = filePath.split('/').pop();
         githubLinkHref.href = `https://github.com/Sandelier/${fileName.replace('.html', '')}`;
     } else {
         activateProgram("browser");
-        websiteIframe.src = "browser/" + filePath;
+        websiteIframe.src = "Main/browser/" + filePath;
     }
 
     if (maximize) {

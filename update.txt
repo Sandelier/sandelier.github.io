@@ -51,6 +51,14 @@ Done:
     - Added loading screen while iframe is hidden.
 
     - Fixed the issue when selectin an previous command the cursor would go to the start of the string.
+
+
+
+    - Changed info icons in aboutme window to be the same svg image since on phone the unicode is just an black box.
+
+    - Made sources look little bit better on smaller screens but its still quite ugly. Would need to redesign the whole sources page but i will do that later.
+
+    - Made index.html be at the root directory for github pages.
     
 TODO: 
     - (Low) Making tab completion work with slashes so we could in example auto complete "Extensions/M" into "Extensions/MangaPresence"
@@ -63,10 +71,6 @@ TODO:
 
     - (Low) Fix refresh button spinning the whole button instead of just the image.
 
-    - (High) Change info icons in aboutme window to be the same svg image since on phone the unicode is just an black box.
-
     - (Mid) Change the iframe viewport size to be smaller for phones since part of it gets overflown in phones.
 
     - (High) Make terminal easier to use on phone.
-
-    - (Mid) Sources window is quite ugly on phones.

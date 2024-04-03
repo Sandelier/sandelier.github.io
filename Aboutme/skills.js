@@ -106,9 +106,13 @@ const tooltipContent = {
 };
 
 
-document.querySelectorAll('#aboutme-container-skills-info p').forEach(p => {
-    p.addEventListener('click', toggleTooltip);
-    p.textContent = `${p.textContent} 🛈`;
+document.querySelectorAll('#aboutme-container-skills-info div div').forEach(div => {
+    div.addEventListener('click', toggleTooltip);
+
+    const imgDiv = document.createElement('div');
+    imgDiv.classList.add('aboutme-skills-infoIcon');
+    
+    div.appendChild(imgDiv);
 });
 
 const skillText = document.getElementById('SkillText');

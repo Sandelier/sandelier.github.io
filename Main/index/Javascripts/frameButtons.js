@@ -40,7 +40,7 @@ function closeProgram(dataText) {
                     data.removeChild(data.firstChild);
                 }
                 if (data.tagName === 'IFRAME') {
-                    data.src = 'browser/default/default.html'; // for iframe in browser.
+                    data.src = 'main/browser/default/default.html'; // for iframe in browser.
                 }
             });
             program.style.display = 'none';

@@ -77,16 +77,16 @@
 }
 
 #program-shortcut-github {
-	background-image: url('../../codingIndex/images/github.webp');
+	background-image: url('../../index/images/github.webp');
 	filter: invert(100%); /* The image is black so we have to switch it to white. */
 }
 
 #program-shortcut-sources {
-	background-image: url('../../codingIndex/images/Sources.webp');
+	background-image: url('../../index/images/Sources.webp');
 }
 
 #program-shortcut-Models {
-	background-image: url('../../codingIndex/images/blenderLogo.webp');
+	background-image: url('../../index/images/blenderLogo.webp');
 }
 
 #program-shortcut-settings {
@@ -94,7 +94,7 @@
 }
 
 #program-shortcut-AboutMe {
-	background-image: url('../../codingIndex/images/infoIcon.svg');
+	background-image: url('../../index/images/infoIcon.svg');
 }
 
 .highlighted {

@@ -48,6 +48,10 @@ body {
     font-size: calc(10px + 1vh + 1vw);
 }
 
+#aboutme-container-skills-info > div > div {
+    align-self: center;
+}
+
 /* Skills */
 
 #aboutme-container > ul > button {
@@ -85,14 +89,25 @@ body {
     gap: 5px;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 15px;
+    margin-top: calc(15px + 1%);
+}
+
+#aboutme-container-skills-info > div > div > div {
+    background-image: url('../Main/index/images/infoIcon.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: calc(10px + 1vh + 1vw);
+    width: calc(10px + 1vh + 1vw);
+    filter: invert(1);
+    margin-left: 5px;
 }
 
 
 
-
-#aboutme-container-skills-info > * > p {
+#aboutme-container-skills-info > div > div {
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 

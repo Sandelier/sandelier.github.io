@@ -57,7 +57,7 @@ header {
     align-items: center;
     text-align: center;
     color: white;
-    max-height: 400px;
+    justify-content: center;
 }
 
 .sideContainer img,
@@ -71,13 +71,14 @@ header {
 .sideContainer ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 2px;
     overflow-wrap: anywhere;
 }
 
 .sideContainer ul li {
     display: flex;
     gap: 5px;
+    justify-content: center;
 }
 
 .sideContainer a {
@@ -112,4 +113,46 @@ header {
 
 .hidden {
     display: none;
+}
+
+
+
+
+/* */
+
+@media screen and (max-width: 700px) {
+    .sideContainer {
+        position: relative;
+        width: 100vw;
+        transform: translate(0);
+        top: 0;
+        left: 0;
+    }
+
+    #content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    body {
+        overflow: scroll;
+    }
+
+    .hidden {
+        display: flex;
+    }
+
+    .right {
+        filter: none;
+        cursor: default;
+    }
+
+    .left {
+        filter: none;
+        cursor: default;
+    }
+
+    header {
+        display: none;
+    }
 }
