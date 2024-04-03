@@ -52,8 +52,6 @@ Done:
 
     - Fixed the issue when selectin an previous command the cursor would go to the start of the string.
 
-
-
     - Changed info icons in aboutme window to be the same svg image since on phone the unicode is just an black box.
 
     - Made sources look little bit better on smaller screens but its still quite ugly. Would need to redesign the whole sources page but i will do that later.
